@@ -7,11 +7,11 @@ import react.functionalComponent
 import react.table.RenderType
 import react.table.columns
 import react.table.useTable
+import react.useMemo
 import styled.*
 
 external interface UserTableProps : RProps {
-    var headers: Array<String>
-    var users: Array<User>
+    var users: Array<out User>
 }
 
 val UserTable = functionalComponent<UserTableProps> { props ->
@@ -19,18 +19,25 @@ val UserTable = functionalComponent<UserTableProps> { props ->
         window.alert(user.name)
     }
 
+    val columns = useMemo(
+        {
+            columns<User> {
+                column<String> {
+                    header = "Name"
+                    accessorFunction = { it.name }
+                }
+                column<Int> {
+                    header = "Age"
+                    accessorFunction = { it.age }
+                }
+            }
+        },
+        emptyArray()
+    )
+
     val table = useTable<User> {
-        data = props.users
-        columns = columns {
-            column<String> {
-                header = props.headers[0]
-                accessorFunction = { it.name }
-            }
-            column<Int> {
-                header = props.headers[1]
-                accessorFunction = { it.age }
-            }
-        }
+        this.data = props.users
+        this.columns = columns
     }
 
     styledDiv {

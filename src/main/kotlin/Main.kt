@@ -5,17 +5,12 @@ import react.dom.render
 fun main() {
     render(document.getElementById("root")) {
         child(UserTable) {
-            attrs {
-                headers = arrayOf(
-                    "Name", "Age"
-                )
-                users = arrayOf(
-                    User("Victor", 32),
-                    User("Alexander", 26),
-                    User("Catherine", 25),
-                    User("Nicolas", 25),
-                )
-            }
+            attrs.users = arrayOf(
+                User("Victor", 32),
+                User("Alexander", 26),
+                User("Catherine", 25),
+                User("Nicolas", 25),
+            )
         }
     }
 }
