@@ -7,46 +7,46 @@ import react.functionalComponent
 import react.table.RenderType
 import react.table.columns
 import react.table.useTable
-import react.useMemo
 import styled.*
 
 external interface UserTableProps : RProps {
-    var users: Array<out User>
+    var data: Array<out User>
 }
 
 val UserTable = functionalComponent<UserTableProps> { props ->
-    val onRowClick = { user: User ->
-        window.alert(user.name)
+    val onRowClick = useCallback {
+        { user: User -> window.alert(user.name) }
     }
 
-    val columns = useMemo(
-        {
-            columns<User> {
-                column<String> {
-                    header = "Name"
-                    accessorFunction = { it.name }
-                }
-                column<Int> {
-                    header = "Age"
-                    accessorFunction = { it.age }
-                }
+    val columns = useMemo {
+        columns<User> {
+            column<String> {
+                header = "Name"
+                accessorFunction = { it.name }
             }
-        },
-        emptyArray()
-    )
+            column<Int> {
+                header = "Age"
+                accessorFunction = { it.age }
+            }
+        }
+    }
 
     val table = useTable<User> {
-        this.data = props.users
+        this.data = props.data
         this.columns = columns
     }
 
     styledDiv {
         styledTable {
             css {
-                width = 100.pct
+                width = 400.px
                 borderSpacing = 0.px
                 borderCollapse = BorderCollapse.collapse
                 whiteSpace = WhiteSpace.nowrap
+                borderWidth = 2.px
+                borderStyle = BorderStyle.solid
+                borderColor = Colors.Stroke.Gray
+                margin(LinearDimension.auto)
             }
             attrs {
                 extraAttrs = table.getTableProps()
@@ -54,7 +54,7 @@ val UserTable = functionalComponent<UserTableProps> { props ->
             styledThead {
                 css {
                     color = Colors.Text.Gray
-                    fontSize = 12.px
+                    fontSize = 18.px
                     backgroundColor = Colors.Background.Gray
                 }
 
@@ -109,7 +109,7 @@ val UserTable = functionalComponent<UserTableProps> { props ->
 
                     styledTr {
                         css {
-                            fontSize = 14.px
+                            fontSize = 16.px
                             cursor = Cursor.pointer
                             borderBottom = solid(Colors.Stroke.LightGray)
                             hover {
@@ -119,7 +119,7 @@ val UserTable = functionalComponent<UserTableProps> { props ->
 
                         attrs {
                             extraAttrs = row.getRowProps()
-                            onClickFunction = { onRowClick(row.original) }
+                            onClickFunction = { onRowClick()(row.original) }
                         }
 
                         for (cell in row.cells) {

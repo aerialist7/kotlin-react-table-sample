@@ -5,7 +5,7 @@ import react.dom.render
 fun main() {
     render(document.getElementById("root")) {
         child(UserTable) {
-            attrs.users = arrayOf(
+            attrs.data = arrayOf(
                 User("Victor", 32),
                 User("Alexander", 26),
                 User("Catherine", 25),
