@@ -1,7 +1,5 @@
-import kotlinext.js.Object
 import kotlinx.browser.window
 import kotlinx.css.*
-import kotlinx.html.Tag
 import kotlinx.html.js.onClickFunction
 import react.RProps
 import react.dom.tr
@@ -12,41 +10,43 @@ import react.table.useTable
 import styled.*
 
 external interface UserTableProps : RProps {
-    var headers: Array<String>
-    var users: Array<User>
+    var data: Array<out User>
 }
 
-data class User(
-    val name: String,
-    val age: Int,
-)
-
 val UserTable = functionalComponent<UserTableProps> { props ->
-    val onRowClick = { user: User ->
-        window.alert(user.name)
+    val onRowClick = useCallback {
+        { user: User -> window.alert(user.name) }
     }
 
-    val table = useTable<User> {
-        data = props.users
-        columns = columns {
+    val columns = useMemo {
+        columns<User> {
             column<String> {
-                header = props.headers[0]
+                header = "Name"
                 accessorFunction = { it.name }
             }
             column<Int> {
-                header = props.headers[1]
+                header = "Age"
                 accessorFunction = { it.age }
             }
         }
     }
 
+    val table = useTable<User> {
+        this.data = props.data
+        this.columns = columns
+    }
+
     styledDiv {
         styledTable {
             css {
-                width = 100.pct
+                width = 400.px
                 borderSpacing = 0.px
                 borderCollapse = BorderCollapse.collapse
                 whiteSpace = WhiteSpace.nowrap
+                borderWidth = 2.px
+                borderStyle = BorderStyle.solid
+                borderColor = Colors.Stroke.Gray
+                margin(LinearDimension.auto)
             }
             attrs {
                 extraAttrs = table.getTableProps()
@@ -54,7 +54,7 @@ val UserTable = functionalComponent<UserTableProps> { props ->
             styledThead {
                 css {
                     color = Colors.Text.Gray
-                    fontSize = 12.px
+                    fontSize = 18.px
                     backgroundColor = Colors.Background.Gray
                 }
 
@@ -109,7 +109,7 @@ val UserTable = functionalComponent<UserTableProps> { props ->
 
                     styledTr {
                         css {
-                            fontSize = 14.px
+                            fontSize = 16.px
                             cursor = Cursor.pointer
                             borderBottom = solid(Colors.Stroke.LightGray)
                             hover {
@@ -119,7 +119,7 @@ val UserTable = functionalComponent<UserTableProps> { props ->
 
                         attrs {
                             extraAttrs = row.getRowProps()
-                            onClickFunction = { onRowClick(row.original) }
+                            onClickFunction = { onRowClick()(row.original) }
                         }
 
                         for (cell in row.cells) {
@@ -142,35 +142,8 @@ val UserTable = functionalComponent<UserTableProps> { props ->
     }
 }
 
-object Colors {
-    object Text {
-        val Black: Color = Color("#2E2E2E")
-        val Gray: Color = Color("#75829E")
-    }
-
-    object Background {
-        val Gray: Color = Color("#EDEDF3")
-        val White: Color = Color("#FFFFFF")
-    }
-
-    object Stroke {
-        val LightGray: Color = Color("#F4F4F4")
-        val Gray: Color = Color("#DEE1E9")
-    }
-}
-
-fun solid(
+private fun solid(
     color: Color,
     thickness: Int = 1,
 ): String =
     "${thickness}px solid $color"
-
-var Tag.extraAttrs: RProps
-    @Deprecated(level = DeprecationLevel.HIDDEN, message = "write only")
-    get() = error("write only")
-    set(value) {
-        for (key in Object.keys(value)) {
-            @Suppress("UnsafeCastFromDynamic")
-            attributes[key] = value.asDynamic()[key]
-        }
-    }
