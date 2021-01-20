@@ -24,9 +24,9 @@ val UserTable = functionalComponent<UserTableProps> { props ->
                 header = "Name"
                 accessorFunction = { it.name }
             }
-            column<Int> {
-                header = "Age"
-                accessorFunction = { it.age }
+            column<String> {
+                header = "E-mail"
+                accessorFunction = { it.email }
             }
         }
     }
@@ -97,7 +97,7 @@ val UserTable = functionalComponent<UserTableProps> { props ->
                 css {
                     color = Colors.Text.Black
                     backgroundColor = Colors.Background.White
-                    textAlign = TextAlign.center
+                    textAlign = TextAlign.start
                 }
 
                 attrs {
