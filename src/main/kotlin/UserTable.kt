@@ -1,4 +1,7 @@
 import kotlinx.browser.window
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.await
+import kotlinx.coroutines.launch
 import kotlinx.css.*
 import kotlinx.html.js.onClickFunction
 import react.RProps
@@ -7,13 +10,18 @@ import react.functionalComponent
 import react.table.RenderType
 import react.table.columns
 import react.table.useTable
+import react.useState
 import styled.*
 
-external interface UserTableProps : RProps {
-    var data: Array<out User>
-}
+val UserTable = functionalComponent<RProps> {
+    val (data, setData) = useState<Array<User>>(emptyArray())
 
-val UserTable = functionalComponent<UserTableProps> { props ->
+    useEffectWithCleanup {
+        GlobalScope.launch {
+            setData(fetchData())
+        }::cancel
+    }
+
     val onRowClick = useCallback {
         { user: User -> window.alert(user.name) }
     }
@@ -32,12 +40,15 @@ val UserTable = functionalComponent<UserTableProps> { props ->
     }
 
     val table = useTable<User> {
-        this.data = props.data
+        this.data = data
         this.columns = columns
     }
 
     styledDiv {
         styledTable {
+            attrs {
+                extraAttrs = table.getTableProps()
+            }
             css {
                 width = 400.px
                 borderSpacing = 0.px
@@ -47,9 +58,6 @@ val UserTable = functionalComponent<UserTableProps> { props ->
                 borderStyle = BorderStyle.solid
                 borderColor = Colors.Stroke.Gray
                 margin(LinearDimension.auto)
-            }
-            attrs {
-                extraAttrs = table.getTableProps()
             }
             styledThead {
                 css {
@@ -147,3 +155,10 @@ private fun solid(
     thickness: Int = 1,
 ): String =
     "${thickness}px solid $color"
+
+private suspend fun fetchData(): Array<User> =
+    window.fetch("https://jsonplaceholder.typicode.com/users")
+        .await()
+        .json()
+        .await()
+        .unsafeCast<Array<User>>()
