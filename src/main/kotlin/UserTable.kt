@@ -14,7 +14,9 @@ import react.useState
 import styled.*
 
 val UserTable = functionalComponent<RProps> {
-    val (data, setData) = useState<Array<User>>(emptyArray())
+    val (data, setData) = useState<Array<User>> {
+        emptyArray()
+    }
 
     useEffectWithCleanup {
         GlobalScope.launch {
