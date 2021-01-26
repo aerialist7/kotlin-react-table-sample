@@ -14,13 +14,13 @@ import react.useState
 import styled.*
 
 val UserTable = functionalComponent<RProps> {
-    val (data, setData) = useState<Array<User>> {
+    var data by useState<Array<User>> {
         emptyArray()
     }
 
     useEffectWithCleanup {
         GlobalScope.launch {
-            setData(fetchData())
+            data = fetchData()
         }::cancel
     }
 
@@ -67,18 +67,19 @@ val UserTable = functionalComponent<RProps> {
                     fontSize = 18.px
                     backgroundColor = Colors.Background.Gray
                 }
-
                 for (headerGroup in table.headerGroups) {
                     tr {
                         attrs {
                             extraAttrs = headerGroup.getHeaderGroupProps()
                         }
-
                         for (h in headerGroup.headers) {
                             val originalHeader = h.placeholderOf
                             val header = originalHeader ?: h
 
                             styledTh {
+                                attrs {
+                                    extraAttrs = header.getHeaderProps()
+                                }
                                 css {
                                     fontWeight = FontWeight.normal
                                     padding(4.px, 12.px)
@@ -92,11 +93,6 @@ val UserTable = functionalComponent<RProps> {
                                         borderRight = "none"
                                     }
                                 }
-
-                                attrs {
-                                    extraAttrs = header.getHeaderProps()
-                                }
-
                                 +header.render(RenderType.Header)
                             }
                         }
@@ -104,20 +100,22 @@ val UserTable = functionalComponent<RProps> {
                 }
             }
             styledTbody {
+                attrs {
+                    extraAttrs = table.getTableBodyProps()
+                }
                 css {
                     color = Colors.Text.Black
                     backgroundColor = Colors.Background.White
                     textAlign = TextAlign.start
                 }
-
-                attrs {
-                    extraAttrs = table.getTableBodyProps()
-                }
-
                 for (row in table.rows) {
                     table.prepareRow(row)
 
                     styledTr {
+                        attrs {
+                            extraAttrs = row.getRowProps()
+                            onClickFunction = { onRowClick()(row.original) }
+                        }
                         css {
                             fontSize = 16.px
                             cursor = Cursor.pointer
@@ -126,20 +124,14 @@ val UserTable = functionalComponent<RProps> {
                                 backgroundColor = Colors.Background.Gray
                             }
                         }
-
-                        attrs {
-                            extraAttrs = row.getRowProps()
-                            onClickFunction = { onRowClick()(row.original) }
-                        }
-
                         for (cell in row.cells) {
                             styledTd {
-                                css {
-                                    padding(10.px, 12.px)
-                                }
-
                                 attrs {
                                     extraAttrs = cell.getCellProps()
+                                }
+
+                                css {
+                                    padding(10.px, 12.px)
                                 }
 
                                 +cell.render(RenderType.Cell)
