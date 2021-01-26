@@ -1,7 +1,7 @@
 import react.RCleanup
-import react.useEffectWithCleanup
+import react.rawUseEffect
 
 fun useEffectWithCleanup(
     vararg dependencies: dynamic,
     callback: () -> RCleanup,
-) = useEffectWithCleanup(dependencies.toList(), callback)
+) = rawUseEffect(callback, dependencies)
