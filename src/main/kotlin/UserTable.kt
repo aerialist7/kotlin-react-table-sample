@@ -13,7 +13,7 @@ import react.table.useTable
 import react.useState
 import styled.*
 
-val UserTable = functionalComponent<RProps> {
+private fun useUsers(): Array<User> {
     var data by useState<Array<User>> {
         emptyArray()
     }
@@ -23,6 +23,12 @@ val UserTable = functionalComponent<RProps> {
             data = fetchData()
         }::cancel
     }
+
+    return data
+}
+
+val UserTable = functionalComponent<RProps> {
+    val users = useUsers()
 
     val onRowClick = useCallback {
         { user: User -> window.alert(user.name) }
@@ -42,7 +48,7 @@ val UserTable = functionalComponent<RProps> {
     }
 
     val table = useTable<User> {
-        this.data = data
+        this.data = users
         this.columns = columns
     }
 
