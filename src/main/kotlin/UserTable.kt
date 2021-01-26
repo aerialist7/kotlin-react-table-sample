@@ -4,28 +4,12 @@ import kotlinx.coroutines.await
 import kotlinx.coroutines.launch
 import kotlinx.css.*
 import kotlinx.html.js.onClickFunction
-import react.RProps
+import react.*
 import react.dom.tr
-import react.functionalComponent
 import react.table.RenderType
 import react.table.columns
 import react.table.useTable
-import react.useState
 import styled.*
-
-private fun useUsers(): Array<User> {
-    var data by useState<Array<User>> {
-        emptyArray()
-    }
-
-    useEffectWithCleanup {
-        GlobalScope.launch {
-            data = fetchData()
-        }::cancel
-    }
-
-    return data
-}
 
 val UserTable = functionalComponent<RProps> {
     val users = useUsers()
@@ -155,6 +139,20 @@ private fun solid(
     thickness: Int = 1,
 ): String =
     "${thickness}px solid $color"
+
+private fun useUsers(): Array<User> {
+    var data by useState<Array<User>> {
+        emptyArray()
+    }
+
+    useEffectWithCleanup {
+        GlobalScope.launch {
+            data = fetchData()
+        }::cancel
+    }
+
+    return data
+}
 
 private suspend fun fetchData(): Array<User> =
     window.fetch("https://jsonplaceholder.typicode.com/users")
