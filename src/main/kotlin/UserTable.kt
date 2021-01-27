@@ -14,8 +14,8 @@ import styled.*
 val UserTable = functionalComponent<RProps> {
     val users = useUsers()
 
-    val onRowClick = useCallback {
-        { user: User -> window.alert(user.name) }
+    val onRowClick = useCallback { user: User ->
+        window.alert(user.name)
     }
 
     val columns = useMemo {
@@ -104,7 +104,7 @@ val UserTable = functionalComponent<RProps> {
                     styledTr {
                         attrs {
                             extraAttrs = row.getRowProps()
-                            onClickFunction = { onRowClick()(row.original) }
+                            onClickFunction = { onRowClick(row.original) }
                         }
                         css {
                             fontSize = 16.px
