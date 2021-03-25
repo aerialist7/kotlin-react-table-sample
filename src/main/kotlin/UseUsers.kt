@@ -2,12 +2,12 @@ import kotlinx.browser.window
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.await
 import kotlinx.coroutines.launch
-import react.useState
+import react.*
 
 fun useUsers(): Array<User> {
     var data by useState(emptyArray<User>())
 
-    useEffectWithCleanup {
+    useEffectWithCleanup(emptyList()) {
         val job = GlobalScope.launch {
             data = getUsers()
         }
