@@ -16,9 +16,8 @@ dependencies {
 }
 
 kotlin.js {
-    browser {
-        binaries.executable()
-    }
+    browser()
+    binaries.executable()
 }
 
 tasks.wrapper {
