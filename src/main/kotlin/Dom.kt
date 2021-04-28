@@ -1,13 +1,12 @@
 import kotlinext.js.Object
-import kotlinx.html.Tag
 import react.RProps
+import react.dom.RDOMBuilder
 
-var Tag.extraAttrs: RProps
+var RDOMBuilder<*>.extraAttrs: RProps
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "write only")
     get() = error("write only")
     set(value) {
         for (key in Object.keys(value)) {
-            @Suppress("UnsafeCastFromDynamic")
-            attributes[key] = value.asDynamic()[key]
+            setProp(key, value.asDynamic()[key])
         }
     }

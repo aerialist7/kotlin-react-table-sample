@@ -38,9 +38,8 @@ val UserTable = functionalComponent<RProps> {
 
     styledDiv {
         styledTable {
-            attrs {
-                extraAttrs = table.getTableProps()
-            }
+            extraAttrs = table.getTableProps()
+
             css {
                 width = 400.px
                 borderSpacing = 0.px
@@ -59,17 +58,15 @@ val UserTable = functionalComponent<RProps> {
                 }
                 for (headerGroup in table.headerGroups) {
                     tr {
-                        attrs {
-                            extraAttrs = headerGroup.getHeaderGroupProps()
-                        }
+                        extraAttrs = headerGroup.getHeaderGroupProps()
+
                         for (h in headerGroup.headers) {
                             val originalHeader = h.placeholderOf
                             val header = originalHeader ?: h
 
                             styledTh {
-                                attrs {
-                                    extraAttrs = header.getHeaderProps()
-                                }
+                                extraAttrs = header.getHeaderProps()
+
                                 css {
                                     fontWeight = FontWeight.normal
                                     padding(4.px, 12.px)
@@ -90,9 +87,8 @@ val UserTable = functionalComponent<RProps> {
                 }
             }
             styledTbody {
-                attrs {
-                    extraAttrs = table.getTableBodyProps()
-                }
+                extraAttrs = table.getTableBodyProps()
+
                 css {
                     color = Colors.Text.Black
                     backgroundColor = Colors.Background.White
@@ -102,10 +98,10 @@ val UserTable = functionalComponent<RProps> {
                     table.prepareRow(row)
 
                     styledTr {
-                        attrs {
-                            extraAttrs = row.getRowProps()
-                            onClickFunction = { onRowClick(row.original) }
-                        }
+
+                        extraAttrs = row.getRowProps()
+                        attrs.onClickFunction = { onRowClick(row.original) }
+
                         css {
                             fontSize = 16.px
                             cursor = Cursor.pointer
@@ -116,9 +112,7 @@ val UserTable = functionalComponent<RProps> {
                         }
                         for (cell in row.cells) {
                             styledTd {
-                                attrs {
-                                    extraAttrs = cell.getCellProps()
-                                }
+                                extraAttrs = cell.getCellProps()
 
                                 css {
                                     padding(10.px, 12.px)
