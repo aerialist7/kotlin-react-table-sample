@@ -36,6 +36,11 @@ val UserTable = functionalComponent<RProps> {
         this.columns = columns
     }
 
+    if (users.isEmpty()) {
+        +"Loading..."
+        return@functionalComponent
+    }
+
     styledDiv {
         styledTable {
             extraAttrs = table.getTableProps()
