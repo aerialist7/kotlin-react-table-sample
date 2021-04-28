@@ -7,11 +7,15 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-js-wrappers")
 }
 
+fun kotlinw(target: String): String =
+    "org.jetbrains:kotlin-$target-pre.153-kotlin-1.4.32"
+
 dependencies {
-    implementation("org.jetbrains:kotlin-react:17.0.2-pre.153-kotlin-1.4.32")
-    implementation("org.jetbrains:kotlin-react-dom:17.0.2-pre.153-kotlin-1.4.32")
-    implementation("org.jetbrains:kotlin-react-table:7.6.3-pre.153-kotlin-1.4.32")
-    implementation("org.jetbrains:kotlin-styled:5.2.3-pre.153-kotlin-1.4.32")
+    implementation(kotlinw("react:17.0.2"))
+    implementation(kotlinw("react-dom:17.0.2"))
+    implementation(kotlinw("react-table:7.6.3"))
+    implementation(kotlinw("styled:5.2.3"))
+
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3")
 }
 
