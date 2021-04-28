@@ -1,3 +1,4 @@
+import kotlinext.js.jsObject
 import kotlinx.browser.window
 import kotlinx.css.*
 import kotlinx.html.js.onClickFunction
@@ -31,10 +32,12 @@ val UserTable = functionalComponent<RProps> {
         }
     }
 
-    val table = useTable<User> {
-        this.data = users
-        this.columns = columns
-    }
+    val table = useTable<User>(
+        options = jsObject {
+            this.data = users
+            this.columns = columns
+        }
+    )
 
     if (users.isEmpty()) {
         +"Loading..."
