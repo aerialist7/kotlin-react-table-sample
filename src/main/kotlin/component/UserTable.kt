@@ -43,11 +43,6 @@ private val UserTable = functionalComponent<UserTableProps> {
         }
     )
 
-    if (users.isEmpty()) {
-        +"Loading..."
-        return@functionalComponent
-    }
-
     styledDiv {
         styledTable {
             extraAttrs = table.getTableProps()
