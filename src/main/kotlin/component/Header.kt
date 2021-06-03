@@ -3,13 +3,14 @@ package component
 import kotlinx.css.*
 import kotlinx.css.properties.LineHeight
 import kotlinx.css.properties.TextDecoration
-import react.RProps
-import react.functionalComponent
+import react.*
 import styled.css
 import styled.styledA
 import styled.styledDiv
 
-val Header = functionalComponent<RProps> {
+external interface HeaderProps : RProps
+
+private val Header = functionalComponent<HeaderProps> {
     styledDiv {
         css {
             overflow = Overflow.hidden
@@ -43,3 +44,8 @@ val Header = functionalComponent<RProps> {
         }
     }
 }
+
+fun RBuilder.Header(
+    handler: HeaderProps.() -> Unit,
+): ReactElement =
+    child(Header) { attrs(handler) }

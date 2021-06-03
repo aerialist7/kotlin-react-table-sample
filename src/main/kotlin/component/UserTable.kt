@@ -8,17 +8,16 @@ import kotlinext.js.jsObject
 import kotlinx.browser.window
 import kotlinx.css.*
 import kotlinx.html.js.onClickFunction
-import react.RProps
+import react.*
 import react.dom.tr
-import react.functionalComponent
 import react.table.RenderType
 import react.table.columns
 import react.table.useTable
-import react.useCallback
-import react.useMemo
 import styled.*
 
-val UserTable = functionalComponent<RProps> {
+external interface UserTableProps : RProps
+
+private val UserTable = functionalComponent<UserTableProps> {
     val users = useUsers()
 
     val onRowClick = useCallback { user: User ->
@@ -141,6 +140,11 @@ val UserTable = functionalComponent<RProps> {
         }
     }
 }
+
+fun RBuilder.UserTable(
+    handler: UserTableProps.() -> Unit,
+): ReactElement =
+    child(UserTable) { attrs(handler) }
 
 private fun solid(
     color: Color,
