@@ -1,4 +1,4 @@
-package hooks
+package hook
 
 import data.User
 import kotlinx.browser.window

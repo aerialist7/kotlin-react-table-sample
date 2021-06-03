@@ -1,4 +1,4 @@
-package hooks
+package hook
 
 import react.RCleanup
 import react.rawUseEffect
