@@ -3,7 +3,6 @@ package component
 import Colors
 import data.User
 import extraAttrs
-import hook.useUsers
 import kotlinext.js.jsObject
 import kotlinx.browser.window
 import kotlinx.css.*
@@ -18,7 +17,7 @@ import styled.*
 external interface UserTableProps : RProps
 
 private val UserTable = functionalComponent<UserTableProps> {
-    val users = useUsers()
+    val users = useContext(UsersContext)
 
     val onRowClick = useCallback { user: User ->
         window.alert(user.name)
