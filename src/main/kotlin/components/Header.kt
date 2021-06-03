@@ -1,3 +1,9 @@
+package components
+
+import Colors
+import data.User
+import extraAttrs
+import hooks.useUsers
 import kotlinext.js.jsObject
 import kotlinx.browser.window
 import kotlinx.css.*
@@ -12,7 +18,7 @@ import react.useCallback
 import react.useMemo
 import styled.*
 
-val UserTable = functionalComponent<RProps> {
+val Header = functionalComponent<RProps> {
     val users = useUsers()
 
     val onRowClick = useCallback { user: User ->

@@ -1,3 +1,6 @@
+package hooks
+
+import data.User
 import kotlinx.browser.window
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.await
