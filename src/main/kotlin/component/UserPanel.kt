@@ -7,9 +7,9 @@ import react.*
 import styled.css
 import styled.styledDiv
 
-external interface ContextPanelProps : RProps
+external interface UserPanelProps : RProps
 
-private val ContextPanel = functionalComponent<ContextPanelProps> {
+private val UserPanel = functionalComponent<UserPanelProps> {
     val user = useSelectedUser()
 
     styledDiv {
@@ -40,7 +40,7 @@ private val ContextPanel = functionalComponent<ContextPanelProps> {
 
 }
 
-fun RBuilder.ContextPanel(
-    handler: ContextPanelProps.() -> Unit,
+fun RBuilder.UserPanel(
+    handler: UserPanelProps.() -> Unit,
 ): ReactElement =
-    child(ContextPanel) { attrs(handler) }
+    child(UserPanel) { attrs(handler) }

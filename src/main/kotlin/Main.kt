@@ -1,7 +1,4 @@
-import component.Header
-import component.SelectionModule
-import component.UserInfo
-import component.UsersModule
+import component.*
 import kotlinx.browser.document
 import react.dom.render
 
@@ -10,6 +7,7 @@ fun main() {
         UsersModule {
             SelectionModule {
                 Header {}
+                LoadingIndicator {}
                 UserInfo {}
             }
         }

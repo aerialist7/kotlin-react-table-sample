@@ -14,9 +14,8 @@ private val UserInfo = functionalComponent<UserInfoProps> {
             display = Display.grid
             gridAutoFlow = GridAutoFlow.column
         }
-        LoadingIndicator {}
         UserTable {}
-        ContextPanel {}
+        UserPanel {}
     }
 }
 
