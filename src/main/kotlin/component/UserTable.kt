@@ -13,12 +13,15 @@ import react.table.columns
 import react.table.useTable
 import styled.*
 
-external interface UserTableProps : RProps {
-    var onRowClick: (user: User) -> Unit
-}
+external interface UserTableProps : RProps
 
-private val UserTable = functionalComponent<UserTableProps> { props ->
+private val UserTable = functionalComponent<UserTableProps> {
     val users = useContext(UsersContext)
+    val (_, setSelectionKey) = useContext(SelectionContext)
+
+    val onRowClick = useCallback { user: User ->
+        setSelectionKey(user.username)
+    }
 
     val columns = useMemo {
         columns<User> {
@@ -104,7 +107,7 @@ private val UserTable = functionalComponent<UserTableProps> { props ->
                     styledTr {
 
                         extraAttrs = row.getRowProps()
-                        attrs.onClickFunction = { props.onRowClick(row.original) }
+                        attrs.onClickFunction = { onRowClick(row.original) }
 
                         css {
                             fontSize = 16.px

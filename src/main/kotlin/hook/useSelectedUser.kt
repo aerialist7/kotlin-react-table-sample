@@ -1,18 +1,17 @@
 package hook
 
+import component.SelectionContext
 import component.UsersContext
-import data.Key
 import data.User
 import react.useContext
 import react.useMemo
 
-fun useSelectedUser(
-    key: Key?,
-): User? {
+fun useSelectedUser(): User? {
     val users = useContext(UsersContext)
+    val (selectedKey) = useContext(SelectionContext)
 
-    return useMemo(key, users) {
-        users.find { it.username == key }
+    return useMemo(selectedKey, users) {
+        users.find { it.username == selectedKey }
     }
 }
 

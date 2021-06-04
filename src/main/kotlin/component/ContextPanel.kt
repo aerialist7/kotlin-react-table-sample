@@ -1,17 +1,17 @@
 package component
 
 import Colors
-import data.User
+import hook.useSelectedUser
 import kotlinx.css.*
 import react.*
 import styled.css
 import styled.styledDiv
 
-external interface ContextPanelProps : RProps {
-    var user: User?
-}
+external interface ContextPanelProps : RProps
 
-private val ContextPanel = functionalComponent<ContextPanelProps> { props ->
+private val ContextPanel = functionalComponent<ContextPanelProps> {
+    val user = useSelectedUser()
+
     styledDiv {
         css {
             width = 400.px
@@ -25,16 +25,16 @@ private val ContextPanel = functionalComponent<ContextPanelProps> { props ->
         }
 
         styledDiv {
-            +"Name: ${props.user?.name ?: "—"}"
+            +"Name: ${user?.name ?: "—"}"
         }
         styledDiv {
-            +"E-mail: ${props.user?.email ?: "—"}"
+            +"E-mail: ${user?.email ?: "—"}"
         }
         styledDiv {
-            +"Phone: ${props.user?.phone ?: "—"}"
+            +"Phone: ${user?.phone ?: "—"}"
         }
         styledDiv {
-            +"Website: ${props.user?.website ?: "—"}"
+            +"Website: ${user?.website ?: "—"}"
         }
     }
 
