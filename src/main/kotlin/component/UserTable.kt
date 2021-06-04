@@ -4,7 +4,6 @@ import Colors
 import data.User
 import extraAttrs
 import kotlinext.js.jsObject
-import kotlinx.browser.window
 import kotlinx.css.*
 import kotlinx.html.js.onClickFunction
 import react.*
@@ -14,14 +13,12 @@ import react.table.columns
 import react.table.useTable
 import styled.*
 
-external interface UserTableProps : RProps
+external interface UserTableProps : RProps {
+    var onRowClick: (user: User) -> Unit
+}
 
-private val UserTable = functionalComponent<UserTableProps> {
+private val UserTable = functionalComponent<UserTableProps> { props ->
     val users = useContext(UsersContext)
-
-    val onRowClick = useCallback { user: User ->
-        window.alert(user.name)
-    }
 
     val columns = useMemo {
         columns<User> {
@@ -107,7 +104,7 @@ private val UserTable = functionalComponent<UserTableProps> {
                     styledTr {
 
                         extraAttrs = row.getRowProps()
-                        attrs.onClickFunction = { onRowClick(row.original) }
+                        attrs.onClickFunction = { props.onRowClick(row.original) }
 
                         css {
                             fontSize = 16.px
