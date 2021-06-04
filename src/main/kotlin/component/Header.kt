@@ -14,7 +14,7 @@ private val Header = functionalComponent<HeaderProps> {
     styledDiv {
         css {
             overflow = Overflow.hidden
-            backgroundColor = Color("#f1f1f1")
+            backgroundColor = Colors.Background.Gray
             padding = "20px 10px"
         }
 
