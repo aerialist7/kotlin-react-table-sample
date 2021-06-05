@@ -1,5 +1,5 @@
 plugins {
-    kotlin("js") version "1.5.0"
+    kotlin("js") version "1.5.10"
 }
 
 repositories {
@@ -7,7 +7,7 @@ repositories {
 }
 
 fun kotlinw(target: String): String =
-    "org.jetbrains.kotlin-wrappers:kotlin-$target-pre.204-kotlin-1.5.0"
+    "org.jetbrains.kotlin-wrappers:kotlin-$target-pre.207-kotlin-1.5.10"
 
 dependencies {
     implementation(kotlinw("react:17.0.2"))
