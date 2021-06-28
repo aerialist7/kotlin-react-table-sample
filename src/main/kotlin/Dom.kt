@@ -1,6 +1,7 @@
 import kotlinext.js.Object
 import react.RProps
 import react.dom.RDOMBuilder
+import react.dom.setProp
 
 var RDOMBuilder<*>.extraAttrs: RProps
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "write only")
