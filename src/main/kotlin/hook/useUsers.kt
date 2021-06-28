@@ -5,16 +5,17 @@ import kotlinx.browser.window
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.await
 import kotlinx.coroutines.launch
+import react.useEffect
 import react.useState
 
 fun useUsers(): Users {
     var data by useState<Users>(emptyArray())
 
-    useEffectWithCleanup {
+    useEffect {
         val job = GlobalScope.launch {
             data = getUsers()
         }
-        job::cancel
+        cleanup(job::cancel)
     }
 
     return data
