@@ -1,22 +1,26 @@
+package component
+
+import Colors
+import data.User
+import extraAttrs
 import kotlinext.js.jsObject
-import kotlinx.browser.window
 import kotlinx.css.*
 import kotlinx.html.js.onClickFunction
-import react.RProps
+import react.*
 import react.dom.tr
-import react.functionalComponent
 import react.table.RenderType
 import react.table.columns
 import react.table.useTable
-import react.useCallback
-import react.useMemo
 import styled.*
 
-val UserTable = functionalComponent<RProps> {
-    val users = useUsers()
+external interface UserTableProps : RProps
+
+private val UserTable = functionalComponent<UserTableProps> {
+    val users = useContext(UsersContext)
+    val (_, setSelectionKey) = useContext(SelectionContext)
 
     val onRowClick = useCallback { user: User ->
-        window.alert(user.name)
+        setSelectionKey(user.username)
     }
 
     val columns = useMemo {
@@ -38,11 +42,6 @@ val UserTable = functionalComponent<RProps> {
             this.columns = columns
         }
     )
-
-    if (users.isEmpty()) {
-        +"Loading..."
-        return@functionalComponent
-    }
 
     styledDiv {
         styledTable {
@@ -135,6 +134,11 @@ val UserTable = functionalComponent<RProps> {
         }
     }
 }
+
+fun RBuilder.UserTable(
+    handler: UserTableProps.() -> Unit,
+): ReactElement =
+    child(UserTable) { attrs(handler) }
 
 private fun solid(
     color: Color,
