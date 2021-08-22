@@ -2,13 +2,15 @@ package component
 
 import data.Users
 import hook.useUsers
-import react.*
+import react.RProps
+import react.createContext
+import react.fc
 
 val UsersContext = createContext<Users>()
 
 external interface UserModuleProps : RProps
 
-private val UsersModule = fc<UserModuleProps> { props ->
+val UsersModule = fc<UserModuleProps> { props ->
 
     val users = useUsers()
 
@@ -17,11 +19,3 @@ private val UsersModule = fc<UserModuleProps> { props ->
     }
 
 }
-
-fun RBuilder.UsersModule(
-    handler: RHandler<UserModuleProps>,
-): ReactElement =
-    child(
-        component = UsersModule,
-        handler = handler,
-    )

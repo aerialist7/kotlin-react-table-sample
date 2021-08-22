@@ -1,13 +1,14 @@
 package component
 
 import kotlinx.css.*
-import react.*
+import react.RProps
+import react.fc
 import styled.css
 import styled.styledDiv
 
 external interface UserInfoProps : RProps
 
-private val UserInfo = fc<UserInfoProps> {
+val UserInfo = fc<UserInfoProps> {
     styledDiv {
         css {
             padding = "20px"
@@ -18,8 +19,3 @@ private val UserInfo = fc<UserInfoProps> {
         UserPanel {}
     }
 }
-
-fun RBuilder.UserInfo(
-    handler: UserInfoProps.() -> Unit,
-): ReactElement =
-    child(UserInfo) { attrs(handler) }

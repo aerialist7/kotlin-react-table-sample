@@ -15,7 +15,7 @@ import styled.*
 
 external interface UserTableProps : RProps
 
-private val UserTable = fc<UserTableProps> {
+val UserTable = fc<UserTableProps> {
     val users = useContext(UsersContext)
     val (_, setSelectionKey) = useContext(SelectionContext)
 
@@ -134,11 +134,6 @@ private val UserTable = fc<UserTableProps> {
         }
     }
 }
-
-fun RBuilder.UserTable(
-    handler: UserTableProps.() -> Unit,
-): ReactElement =
-    child(UserTable) { attrs(handler) }
 
 private fun solid(
     color: Color,

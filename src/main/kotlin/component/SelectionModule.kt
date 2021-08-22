@@ -12,7 +12,7 @@ val SelectionContext = createContext<Selection>()
 
 external interface SelectionModuleProps : RProps
 
-private val SelectionModule = fc<SelectionModuleProps> { props ->
+val SelectionModule = fc<SelectionModuleProps> { props ->
     val (selectedKey, setSelectedKey) = useState<Key?>(null)
     val selection = useMemo(selectedKey, setSelectedKey) {
         Selection(selectedKey, setSelectedKey)
@@ -21,11 +21,3 @@ private val SelectionModule = fc<SelectionModuleProps> { props ->
         props.children()
     }
 }
-
-fun RBuilder.SelectionModule(
-    handler: RHandler<SelectionModuleProps>,
-): ReactElement =
-    child(
-        component = SelectionModule,
-        handler = handler,
-    )

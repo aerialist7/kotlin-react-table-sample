@@ -1,10 +1,12 @@
 package component
 
-import react.*
+import react.RProps
+import react.fc
+import react.useContext
 
 external interface LoadingIndicatorProps : RProps
 
-private val LoadingIndicator = fc<LoadingIndicatorProps> {
+val LoadingIndicator = fc<LoadingIndicatorProps> {
     val users = useContext(UsersContext)
 
     when {
@@ -12,8 +14,3 @@ private val LoadingIndicator = fc<LoadingIndicatorProps> {
         else -> +""
     }
 }
-
-fun RBuilder.LoadingIndicator(
-    handler: LoadingIndicatorProps.() -> Unit,
-): ReactElement =
-    child(LoadingIndicator) { attrs(handler) }

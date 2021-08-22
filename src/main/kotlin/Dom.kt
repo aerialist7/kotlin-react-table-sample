@@ -1,9 +1,9 @@
 import kotlinext.js.Object
-import react.RProps
+import react.Props
 import react.dom.RDOMBuilder
 import react.dom.setProp
 
-var RDOMBuilder<*>.extraAttrs: RProps
+var RDOMBuilder<*>.extraAttrs: Props
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "write only")
     get() = error("write only")
     set(value) {

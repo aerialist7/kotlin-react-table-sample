@@ -3,14 +3,15 @@ package component
 import Colors
 import hook.useSelectedUser
 import kotlinx.css.*
-import react.*
+import react.RProps
 import react.dom.div
+import react.fc
 import styled.css
 import styled.styledDiv
 
 external interface UserPanelProps : RProps
 
-private val UserPanel = fc<UserPanelProps> {
+val UserPanel = fc<UserPanelProps> {
     val user = useSelectedUser()
     div {
         div {
@@ -42,8 +43,3 @@ private val UserPanel = fc<UserPanelProps> {
         }
     }
 }
-
-fun RBuilder.UserPanel(
-    handler: UserPanelProps.() -> Unit,
-): ReactElement =
-    child(UserPanel) { attrs(handler) }
