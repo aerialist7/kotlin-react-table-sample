@@ -8,7 +8,7 @@ val UsersContext = createContext<Users>()
 
 external interface UserModuleProps : RProps
 
-private val UsersModule = functionalComponent<UserModuleProps> { props ->
+private val UsersModule = fc<UserModuleProps> { props ->
 
     val users = useUsers()
 

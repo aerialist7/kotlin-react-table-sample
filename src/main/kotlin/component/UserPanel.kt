@@ -10,7 +10,7 @@ import styled.styledDiv
 
 external interface UserPanelProps : RProps
 
-private val UserPanel = functionalComponent<UserPanelProps> {
+private val UserPanel = fc<UserPanelProps> {
     val user = useSelectedUser()
     div {
         div {

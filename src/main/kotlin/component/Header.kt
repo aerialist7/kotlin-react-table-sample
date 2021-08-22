@@ -1,5 +1,6 @@
 package component
 
+import Colors
 import kotlinx.css.*
 import kotlinx.css.properties.LineHeight
 import kotlinx.css.properties.TextDecoration
@@ -10,7 +11,7 @@ import styled.styledDiv
 
 external interface HeaderProps : RProps
 
-private val Header = functionalComponent<HeaderProps> {
+private val Header = fc<HeaderProps> {
     styledDiv {
         css {
             overflow = Overflow.hidden

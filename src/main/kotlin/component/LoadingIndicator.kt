@@ -4,7 +4,7 @@ import react.*
 
 external interface LoadingIndicatorProps : RProps
 
-private val LoadingIndicator = functionalComponent<LoadingIndicatorProps> {
+private val LoadingIndicator = fc<LoadingIndicatorProps> {
     val users = useContext(UsersContext)
 
     when {

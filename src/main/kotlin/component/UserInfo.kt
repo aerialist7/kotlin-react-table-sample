@@ -7,7 +7,7 @@ import styled.styledDiv
 
 external interface UserInfoProps : RProps
 
-private val UserInfo = functionalComponent<UserInfoProps> {
+private val UserInfo = fc<UserInfoProps> {
     styledDiv {
         css {
             padding = "20px"

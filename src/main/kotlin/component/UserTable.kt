@@ -15,7 +15,7 @@ import styled.*
 
 external interface UserTableProps : RProps
 
-private val UserTable = functionalComponent<UserTableProps> {
+private val UserTable = fc<UserTableProps> {
     val users = useContext(UsersContext)
     val (_, setSelectionKey) = useContext(SelectionContext)
 
