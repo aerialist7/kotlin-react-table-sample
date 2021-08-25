@@ -4,13 +4,13 @@ import Colors
 import kotlinx.css.*
 import kotlinx.css.properties.LineHeight
 import kotlinx.css.properties.TextDecoration
-import react.RProps
+import react.Props
 import react.fc
 import styled.css
 import styled.styledA
 import styled.styledDiv
 
-external interface HeaderProps : RProps
+external interface HeaderProps : Props
 
 val Header = fc<HeaderProps> {
     styledDiv {

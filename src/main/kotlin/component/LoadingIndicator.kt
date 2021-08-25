@@ -1,10 +1,10 @@
 package component
 
-import react.RProps
+import react.Props
 import react.fc
 import react.useContext
 
-external interface LoadingIndicatorProps : RProps
+external interface LoadingIndicatorProps : Props
 
 val LoadingIndicator = fc<LoadingIndicatorProps> {
     val users = useContext(UsersContext)

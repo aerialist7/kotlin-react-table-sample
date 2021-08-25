@@ -3,13 +3,13 @@ package component
 import Colors
 import hook.useSelectedUser
 import kotlinx.css.*
-import react.RProps
+import react.Props
 import react.dom.div
 import react.fc
 import styled.css
 import styled.styledDiv
 
-external interface UserPanelProps : RProps
+external interface UserPanelProps : Props
 
 val UserPanel = fc<UserPanelProps> {
     val user = useSelectedUser()

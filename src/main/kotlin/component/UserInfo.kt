@@ -1,12 +1,12 @@
 package component
 
 import kotlinx.css.*
-import react.RProps
+import react.Props
 import react.fc
 import styled.css
 import styled.styledDiv
 
-external interface UserInfoProps : RProps
+external interface UserInfoProps : Props
 
 val UserInfo = fc<UserInfoProps> {
     styledDiv {

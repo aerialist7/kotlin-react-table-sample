@@ -10,7 +10,7 @@ data class Selection(
 
 val SelectionContext = createContext<Selection>()
 
-external interface SelectionModuleProps : RProps
+external interface SelectionModuleProps : PropsWithChildren
 
 val SelectionModule = fc<SelectionModuleProps> { props ->
     val (selectedKey, setSelectedKey) = useState<Key?>(null)
