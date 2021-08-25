@@ -1,5 +1,5 @@
 plugins {
-    kotlin("js") version "1.5.21"
+    kotlin("js") version "1.5.30"
 }
 
 repositories {
@@ -17,13 +17,6 @@ dependencies {
     implementation(kotlinw("styled"))
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
-}
-
-// TODO: Update Kotlin 1.5.30^ and remove WA
-//  Details: https://youtrack.jetbrains.com/issue/KT-48273
-rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin::class.java) {
-    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().versions.webpackDevServer.version =
-        "4.0.0"
 }
 
 kotlin.js {
