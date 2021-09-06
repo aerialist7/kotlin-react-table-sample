@@ -9,7 +9,7 @@ import react.fc
 import styled.css
 import styled.styledDiv
 
-external interface UserPanelProps : Props
+typealias UserPanelProps = Props
 
 val UserPanel = fc<UserPanelProps> {
     val user = useSelectedUser()

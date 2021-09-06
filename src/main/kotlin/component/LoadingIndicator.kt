@@ -4,7 +4,7 @@ import react.Props
 import react.fc
 import react.useContext
 
-external interface LoadingIndicatorProps : Props
+typealias LoadingIndicatorProps = Props
 
 val LoadingIndicator = fc<LoadingIndicatorProps> {
     val users = useContext(UsersContext)

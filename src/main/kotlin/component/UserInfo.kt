@@ -6,7 +6,7 @@ import react.fc
 import styled.css
 import styled.styledDiv
 
-external interface UserInfoProps : Props
+typealias UserInfoProps = Props
 
 val UserInfo = fc<UserInfoProps> {
     styledDiv {
@@ -15,7 +15,7 @@ val UserInfo = fc<UserInfoProps> {
             display = Display.grid
             gridAutoFlow = GridAutoFlow.column
         }
-        UserTable {}
-        UserPanel {}
+        UserTable()
+        UserPanel()
     }
 }

@@ -13,7 +13,7 @@ import react.table.columns
 import react.table.useTable
 import styled.*
 
-external interface UserTableProps : Props
+typealias UserTableProps = Props
 
 val UserTable = fc<UserTableProps> {
     val users = useContext(UsersContext)

@@ -10,7 +10,8 @@ import styled.css
 import styled.styledA
 import styled.styledDiv
 
-external interface HeaderProps : Props
+// TODO: Return external interface's after wrappers upgrade
+typealias HeaderProps = Props
 
 val Header = fc<HeaderProps> {
     styledDiv {
