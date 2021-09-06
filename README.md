@@ -2,6 +2,8 @@
 
 `./gradlew build`
 
+`./gradlew run -t`
+
 `./gradlew browserDevelopmentRun --continuous`
 
 `./gradlew browserProductionRun --continuous`
