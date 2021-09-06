@@ -6,9 +6,9 @@ fun main() {
     render(document.getElementById("root")) {
         UsersModule {
             SelectionModule {
-                Header {}
-                LoadingIndicator {}
-                UserInfo {}
+                Header()
+                LoadingIndicator()
+                UserInfo()
             }
         }
     }
