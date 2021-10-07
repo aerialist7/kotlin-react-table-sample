@@ -1,6 +1,6 @@
 # IntelliJ IDEA
 .idea
-*.iml
+!.idea/codeInsightSettings.xml
 
 # Gradle
 .gradle
