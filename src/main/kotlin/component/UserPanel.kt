@@ -1,13 +1,15 @@
 package component
 
 import Colors
+import csstype.BorderCollapse
+import csstype.LineStyle
+import csstype.WhiteSpace
+import csstype.px
 import hook.useSelectedUser
-import kotlinx.css.*
 import react.Props
-import react.dom.div
+import react.css.css
+import react.dom.ReactHTML.div
 import react.fc
-import styled.css
-import styled.styledDiv
 
 typealias UserPanelProps = Props
 
@@ -17,27 +19,27 @@ val UserPanel = fc<UserPanelProps> {
         div {
             +"Additional User Information"
         }
-        styledDiv {
+        div {
             css {
                 width = 400.px
                 borderSpacing = 0.px
                 borderCollapse = BorderCollapse.collapse
                 whiteSpace = WhiteSpace.nowrap
                 borderWidth = 2.px
-                borderStyle = BorderStyle.solid
+                borderStyle = LineStyle.solid
                 borderColor = Colors.Stroke.Gray
                 marginTop = 20.px
             }
-            styledDiv {
+            div {
                 +"Name: ${user?.name ?: "—"}"
             }
-            styledDiv {
+            div {
                 +"E-mail: ${user?.email ?: "—"}"
             }
-            styledDiv {
+            div {
                 +"Phone: ${user?.phone ?: "—"}"
             }
-            styledDiv {
+            div {
                 +"Website: ${user?.website ?: "—"}"
             }
         }

@@ -1,17 +1,19 @@
 package component
 
-import kotlinx.css.*
+import csstype.Display
+import csstype.GridAutoFlow
+import csstype.px
 import react.Props
+import react.css.css
+import react.dom.ReactHTML.div
 import react.fc
-import styled.css
-import styled.styledDiv
 
 typealias UserInfoProps = Props
 
 val UserInfo = fc<UserInfoProps> {
-    styledDiv {
+    div {
         css {
-            padding = "20px"
+            padding = 20.px
             display = Display.grid
             gridAutoFlow = GridAutoFlow.column
         }

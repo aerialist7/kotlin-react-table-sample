@@ -1,17 +1,22 @@
 package component
 
 import Colors
+import csstype.*
 import data.User
 import extraAttrs
-import kotlinext.js.jsObject
-import kotlinx.css.*
-import kotlinx.html.js.onClickFunction
+import kotlinext.js.jso
 import react.*
-import react.dom.tr
+import react.css.css
+import react.dom.ReactHTML.div
+import react.dom.ReactHTML.table
+import react.dom.ReactHTML.tbody
+import react.dom.ReactHTML.td
+import react.dom.ReactHTML.th
+import react.dom.ReactHTML.thead
+import react.dom.ReactHTML.tr
 import react.table.RenderType
 import react.table.columns
 import react.table.useTable
-import styled.*
 
 typealias UserTableProps = Props
 
@@ -37,14 +42,14 @@ val UserTable = fc<UserTableProps> {
     }
 
     val table = useTable<User>(
-        options = jsObject {
+        options = jso {
             this.data = users
             this.columns = columns
         }
     )
 
-    styledDiv {
-        styledTable {
+    div {
+        table {
             extraAttrs = table.getTableProps()
 
             css {
@@ -53,11 +58,11 @@ val UserTable = fc<UserTableProps> {
                 borderCollapse = BorderCollapse.collapse
                 whiteSpace = WhiteSpace.nowrap
                 borderWidth = 2.px
-                borderStyle = BorderStyle.solid
+                borderStyle = LineStyle.solid
                 borderColor = Colors.Stroke.Gray
-                margin(LinearDimension.auto)
+                margin = Length.auto
             }
-            styledThead {
+            thead {
                 css {
                     color = Colors.Text.Gray
                     fontSize = 18.px
@@ -71,7 +76,7 @@ val UserTable = fc<UserTableProps> {
                             val originalHeader = h.placeholderOf
                             val header = originalHeader ?: h
 
-                            styledTh {
+                            th {
                                 extraAttrs = header.getHeaderProps()
 
                                 css {
@@ -84,7 +89,7 @@ val UserTable = fc<UserTableProps> {
                                     }
 
                                     lastChild {
-                                        borderRight = "none"
+                                        borderRight = LineStyle.none
                                     }
                                 }
                                 +header.render(RenderType.Header)
@@ -93,7 +98,7 @@ val UserTable = fc<UserTableProps> {
                     }
                 }
             }
-            styledTbody {
+            tbody {
                 extraAttrs = table.getTableBodyProps()
 
                 css {
@@ -104,10 +109,10 @@ val UserTable = fc<UserTableProps> {
                 for (row in table.rows) {
                     table.prepareRow(row)
 
-                    styledTr {
+                    tr {
 
                         extraAttrs = row.getRowProps()
-                        attrs.onClickFunction = { onRowClick(row.original) }
+                        attrs.onClick = { onRowClick(row.original) }
 
                         css {
                             fontSize = 16.px
@@ -118,7 +123,7 @@ val UserTable = fc<UserTableProps> {
                             }
                         }
                         for (cell in row.cells) {
-                            styledTd {
+                            td {
                                 extraAttrs = cell.getCellProps()
 
                                 css {
@@ -138,5 +143,6 @@ val UserTable = fc<UserTableProps> {
 private fun solid(
     color: Color,
     thickness: Int = 1,
-): String =
+): Border =
     "${thickness}px solid $color"
+        .unsafeCast<Border>()

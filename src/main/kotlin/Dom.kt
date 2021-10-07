@@ -1,13 +1,12 @@
 import kotlinext.js.Object
 import react.Props
-import react.dom.RDOMBuilder
-import react.dom.setProp
+import react.RElementBuilder
 
-var RDOMBuilder<*>.extraAttrs: Props
+var RElementBuilder<*>.extraAttrs: Props
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "write only")
     get() = error("write only")
     set(value) {
         for (key in Object.keys(value)) {
-            setProp(key, value.asDynamic()[key])
+            attrs.asDynamic()[key] = value.asDynamic()[key]
         }
     }
