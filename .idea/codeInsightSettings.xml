@@ -2,7 +2,6 @@
 <project version="4">
   <component name="JavaProjectCodeInsightSettings">
     <excluded-names>
-      <name>kotlinx.serialization.json.Json</name>
       <name>react.dom.a</name>
       <name>react.dom.abbr</name>
       <name>react.dom.address</name>
