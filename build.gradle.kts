@@ -22,6 +22,11 @@ dependencies {
 kotlin.js {
     browser()
     binaries.executable()
+
+    // TODO: Temporary until Kotlin update
+    rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin::class.java) {
+        rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().versions.webpackCli.version = "4.9.0"
+    }
 }
 
 tasks.wrapper {
