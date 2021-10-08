@@ -4,8 +4,8 @@ import Colors
 import csstype.*
 import react.Props
 import react.css.css
-import react.dom.ReactHTML.a
-import react.dom.ReactHTML.div
+import react.dom.html.ReactHTML.a
+import react.dom.html.ReactHTML.div
 import react.fc
 
 // TODO: Return external interface's after wrappers upgrade

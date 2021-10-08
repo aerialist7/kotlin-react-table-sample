@@ -8,7 +8,7 @@ import csstype.px
 import hook.useSelectedUser
 import react.Props
 import react.css.css
-import react.dom.ReactHTML.div
+import react.dom.html.ReactHTML.div
 import react.fc
 
 typealias UserPanelProps = Props

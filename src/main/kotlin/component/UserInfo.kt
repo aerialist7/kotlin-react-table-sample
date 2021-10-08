@@ -5,7 +5,7 @@ import csstype.GridAutoFlow
 import csstype.px
 import react.Props
 import react.css.css
-import react.dom.ReactHTML.div
+import react.dom.html.ReactHTML.div
 import react.fc
 
 typealias UserInfoProps = Props
