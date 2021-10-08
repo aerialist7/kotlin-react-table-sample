@@ -57,9 +57,7 @@ val UserTable = fc<UserTableProps> {
                 borderSpacing = 0.px
                 borderCollapse = BorderCollapse.collapse
                 whiteSpace = WhiteSpace.nowrap
-                borderWidth = 2.px
-                borderStyle = LineStyle.solid
-                borderColor = Colors.Stroke.Gray
+                border = solid(Colors.Stroke.Gray, 2)
                 margin = Length.auto
             }
             thead {
@@ -142,7 +140,7 @@ val UserTable = fc<UserTableProps> {
 
 private fun solid(
     color: Color,
-    thickness: Int = 1,
+    length: Int = 1,
 ): Border =
-    "${thickness}px solid $color"
+    "${length}px solid $color"
         .unsafeCast<Border>()
