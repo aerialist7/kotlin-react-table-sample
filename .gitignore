@@ -1,8 +1,0 @@
-# IntelliJ IDEA
-.idea
-!.idea/codeInsightSettings.xml
-
-# Gradle
-.gradle
-build/
-
