@@ -1,9 +1,1 @@
-# kotlin-react-table-sample
-
-`./gradlew build`
-
-`./gradlew run -t`
-
-`./gradlew browserDevelopmentRun --continuous`
-
-`./gradlew browserProductionRun --continuous`
+# [Kotlin React Table Sample](https://garagum.github.io/kotlin-react-table-sample/)
