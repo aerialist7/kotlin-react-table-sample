@@ -5,13 +5,13 @@ import kotlinx.browser.window
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.await
 import kotlinx.coroutines.launch
-import react.useEffect
+import react.useEffectOnce
 import react.useState
 
 fun useUsers(): Users {
     var data by useState<Users>(emptyArray())
 
-    useEffect {
+    useEffectOnce {
         val job = GlobalScope.launch {
             data = getUsers()
         }
