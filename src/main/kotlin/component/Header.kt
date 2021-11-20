@@ -16,7 +16,7 @@ val Header = fc<HeaderProps> {
         css {
             overflow = Overflow.hidden
             backgroundColor = Colors.Background.Gray
-            padding(20.px, 10.px)
+            padding = Padding(20.px, 10.px)
         }
 
         a {

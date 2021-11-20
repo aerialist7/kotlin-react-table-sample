@@ -79,7 +79,7 @@ val UserTable = fc<UserTableProps> {
 
                                 css {
                                     fontWeight = FontWeight.normal
-                                    padding(4.px, 12.px)
+                                    padding = Padding(4.px, 12.px)
                                     borderRight = solid(Colors.Stroke.Gray)
 
                                     if (header.columns != null) {
@@ -125,7 +125,7 @@ val UserTable = fc<UserTableProps> {
                                 extraAttrs = cell.getCellProps()
 
                                 css {
-                                    padding(10.px, 12.px)
+                                    padding = Padding(10.px, 12.px)
                                 }
 
                                 +cell.render(RenderType.Cell)
