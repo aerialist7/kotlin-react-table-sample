@@ -1,1 +1,1 @@
-# [Kotlin React Table Sample](https://garagum.github.io/kotlin-react-table-sample/)
+# [Kotlin React Table Sample](https://karakum-team.github.io/kotlin-react-table-sample/)
