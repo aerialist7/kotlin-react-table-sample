@@ -10,13 +10,13 @@ fun kotlinw(target: String): String =
     "org.jetbrains.kotlin-wrappers:kotlin-$target"
 
 dependencies {
-    implementation(enforcedPlatform(kotlinw("wrappers-bom:0.0.1-pre.268-kotlin-1.6.0")))
+    implementation(enforcedPlatform(kotlinw("wrappers-bom:0.0.1-pre.272-kotlin-1.6.0")))
     implementation(kotlinw("react"))
     implementation(kotlinw("react-dom"))
     implementation(kotlinw("react-css"))
     implementation(kotlinw("react-table"))
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-RC")
 }
 
 kotlin.js {
