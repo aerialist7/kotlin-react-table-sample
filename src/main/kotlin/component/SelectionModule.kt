@@ -12,7 +12,7 @@ val SelectionContext = createContext<Selection>()
 
 external interface SelectionModuleProps : PropsWithChildren
 
-val SelectionModule = fc<SelectionModuleProps> { props ->
+val SelectionModule = FC<SelectionModuleProps> { props ->
     val (selectedKey, setSelectedKey) = useState<Key?>(null)
     val selection = useMemo(selectedKey, setSelectedKey) {
         Selection(selectedKey, setSelectedKey)

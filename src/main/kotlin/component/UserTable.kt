@@ -3,7 +3,6 @@ package component
 import Colors
 import csstype.*
 import data.User
-import extraAttrs
 import kotlinext.js.jso
 import react.*
 import react.css.css
@@ -20,7 +19,7 @@ import react.table.useTable
 
 typealias UserTableProps = Props
 
-val UserTable = fc<UserTableProps> {
+val UserTable = FC<UserTableProps> {
     val users = useContext(UsersContext)
     val (_, setSelectionKey) = useContext(SelectionContext)
 
@@ -50,7 +49,7 @@ val UserTable = fc<UserTableProps> {
 
     div {
         table {
-            extraAttrs = table.getTableProps()
+            table.getTableProps()
 
             css {
                 width = 400.px
@@ -68,14 +67,14 @@ val UserTable = fc<UserTableProps> {
                 }
                 for (headerGroup in table.headerGroups) {
                     tr {
-                        extraAttrs = headerGroup.getHeaderGroupProps()
+                        headerGroup.getHeaderGroupProps()
 
                         for (h in headerGroup.headers) {
                             val originalHeader = h.placeholderOf
                             val header = originalHeader ?: h
 
                             th {
-                                extraAttrs = header.getHeaderProps()
+                                header.getHeaderProps()
 
                                 css {
                                     fontWeight = FontWeight.normal
@@ -97,7 +96,7 @@ val UserTable = fc<UserTableProps> {
                 }
             }
             tbody {
-                extraAttrs = table.getTableBodyProps()
+                table.getTableBodyProps()
 
                 css {
                     color = Colors.Text.Black
@@ -108,9 +107,8 @@ val UserTable = fc<UserTableProps> {
                     table.prepareRow(row)
 
                     tr {
-
-                        extraAttrs = row.getRowProps()
-                        attrs.onClick = { onRowClick(row.original) }
+                        row.getRowProps()
+                        onClick = { onRowClick(row.original) }
 
                         css {
                             fontSize = 16.px
@@ -122,7 +120,7 @@ val UserTable = fc<UserTableProps> {
                         }
                         for (cell in row.cells) {
                             td {
-                                extraAttrs = cell.getCellProps()
+                                cell.getCellProps()
 
                                 css {
                                     padding = Padding(10.px, 12.px)

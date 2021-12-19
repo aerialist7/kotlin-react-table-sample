@@ -6,14 +6,14 @@ import csstype.LineStyle
 import csstype.WhiteSpace
 import csstype.px
 import hook.useSelectedUser
+import react.FC
 import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.div
-import react.fc
 
 typealias UserPanelProps = Props
 
-val UserPanel = fc<UserPanelProps> {
+val UserPanel = FC<UserPanelProps> {
     val user = useSelectedUser()
     div {
         div {

@@ -1,9 +1,15 @@
 import component.*
 import kotlinx.browser.document
+import react.Fragment
+import react.create
 import react.dom.render
 
 fun main() {
-    render(document.getElementById("root")!!) {
+    val container = document.createElement("div").also {
+        document.body!!.appendChild(it)
+    }
+
+    val application = Fragment.create {
         UsersModule {
             SelectionModule {
                 Header()
@@ -12,4 +18,6 @@ fun main() {
             }
         }
     }
+
+    render(application, container)
 }

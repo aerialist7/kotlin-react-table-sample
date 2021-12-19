@@ -2,15 +2,15 @@ package component
 
 import data.Users
 import hook.useUsers
+import react.FC
 import react.PropsWithChildren
 import react.createContext
-import react.fc
 
 val UsersContext = createContext<Users>()
 
 external interface UserModuleProps : PropsWithChildren
 
-val UsersModule = fc<UserModuleProps> { props ->
+val UsersModule = FC<UserModuleProps> { props ->
 
     val users = useUsers()
 

@@ -2,16 +2,16 @@ package component
 
 import Colors
 import csstype.*
+import react.FC
 import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.a
 import react.dom.html.ReactHTML.div
-import react.fc
 
 // TODO: Return external interface's after wrappers upgrade
 typealias HeaderProps = Props
 
-val Header = fc<HeaderProps> {
+val Header = FC<HeaderProps> {
     div {
         css {
             overflow = Overflow.hidden
@@ -39,7 +39,7 @@ val Header = fc<HeaderProps> {
                     fontSize = 18.px
                     lineHeight = 25.px
                 }
-                attrs.href = "https://github.com/aerialist7"
+                href = "https://github.com/aerialist7"
                 +"by @aerialist7"
             }
         }
