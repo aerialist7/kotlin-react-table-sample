@@ -1,3 +1,5 @@
+package example
+
 import csstype.Color
 
 object Colors {

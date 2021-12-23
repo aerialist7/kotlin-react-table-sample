@@ -1,3 +1,3 @@
-package data
+package example.data
 
 typealias Key = String

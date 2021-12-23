@@ -1,8 +1,8 @@
-package hook
+package example.hook
 
-import component.SelectionContext
-import component.UsersContext
-import data.User
+import example.component.SelectionContext
+import example.component.UsersContext
+import example.data.User
 import react.useContext
 import react.useMemo
 

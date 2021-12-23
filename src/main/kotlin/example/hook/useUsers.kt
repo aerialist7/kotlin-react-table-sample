@@ -1,6 +1,6 @@
-package hook
+package example.hook
 
-import data.Users
+import example.data.Users
 import kotlinx.browser.window
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.await

@@ -1,7 +1,7 @@
-package component
+package example.component
 
-import data.Users
-import hook.useUsers
+import example.data.Users
+import example.hook.useUsers
 import react.FC
 import react.PropsWithChildren
 import react.createContext

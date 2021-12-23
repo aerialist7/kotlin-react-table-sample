@@ -1,4 +1,4 @@
-package component
+package example.component
 
 import react.FC
 import react.Props

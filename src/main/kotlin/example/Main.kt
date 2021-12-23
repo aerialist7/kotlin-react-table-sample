@@ -1,4 +1,6 @@
-import component.*
+package example
+
+import example.component.*
 import kotlinx.browser.document
 import react.Fragment
 import react.create

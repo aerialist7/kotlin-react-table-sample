@@ -1,8 +1,8 @@
-package component
+package example.component
 
-import Colors
+import example.Colors
 import csstype.*
-import data.User
+import example.data.User
 import kotlinext.js.jso
 import react.*
 import react.css.css

@@ -1,6 +1,6 @@
-package component
+package example.component
 
-import Colors
+import example.Colors
 import csstype.*
 import react.FC
 import react.Props

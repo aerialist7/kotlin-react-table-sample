@@ -1,4 +1,4 @@
-package data
+package example.data
 
 external interface User {
     val username: Key

@@ -1,4 +1,4 @@
-package component
+package example.component
 
 import csstype.Display
 import csstype.GridAutoFlow

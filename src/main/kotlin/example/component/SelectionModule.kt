@@ -1,6 +1,6 @@
-package component
+package example.component
 
-import data.Key
+import example.data.Key
 import react.*
 
 data class Selection(
