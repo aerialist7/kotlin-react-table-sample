@@ -11,7 +11,6 @@ val UsersContext = createContext<Users>()
 external interface UserModuleProps : PropsWithChildren
 
 val UsersModule = FC<UserModuleProps> { props ->
-
     val users = useUsers()
 
     UsersContext.Provider(users) {

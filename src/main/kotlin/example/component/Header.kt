@@ -1,17 +1,17 @@
 package example.component
 
+import csstype.FontWeight
+import csstype.Overflow
+import csstype.Padding
+import csstype.px
 import example.Colors
-import csstype.*
 import react.FC
 import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.a
 import react.dom.html.ReactHTML.div
 
-// TODO: Return external interface's after wrappers upgrade
-typealias HeaderProps = Props
-
-val Header = FC<HeaderProps> {
+val Header = FC<Props> {
     div {
         css {
             overflow = Overflow.hidden
@@ -24,24 +24,8 @@ val Header = FC<HeaderProps> {
                 fontSize = 25.px
                 fontWeight = FontWeight.bold
             }
+
             +"Kotlin React Table"
-        }
-
-        div {
-            css {
-                float = Float.right
-            }
-
-            a {
-                css {
-                    padding = 12.px
-                    textDecoration = TextDecoration.none
-                    fontSize = 18.px
-                    lineHeight = 25.px
-                }
-                href = "https://github.com/aerialist7"
-                +"by @aerialist7"
-            }
         }
     }
 }

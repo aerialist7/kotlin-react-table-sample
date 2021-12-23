@@ -1,10 +1,10 @@
 package example.component
 
-import example.Colors
 import csstype.BorderCollapse
 import csstype.LineStyle
 import csstype.WhiteSpace
 import csstype.px
+import example.Colors
 import example.hook.useSelectedUser
 import react.FC
 import react.Props
@@ -15,10 +15,12 @@ typealias UserPanelProps = Props
 
 val UserPanel = FC<UserPanelProps> {
     val user = useSelectedUser()
+
     div {
         div {
             +"Additional User Information"
         }
+
         div {
             css {
                 width = 400.px
@@ -30,15 +32,19 @@ val UserPanel = FC<UserPanelProps> {
                 borderColor = Colors.Stroke.Gray
                 marginTop = 20.px
             }
+
             div {
                 +"Name: ${user?.name ?: "—"}"
             }
+
             div {
                 +"E-mail: ${user?.email ?: "—"}"
             }
+
             div {
                 +"Phone: ${user?.phone ?: "—"}"
             }
+
             div {
                 +"Website: ${user?.website ?: "—"}"
             }

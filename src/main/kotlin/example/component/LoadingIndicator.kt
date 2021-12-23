@@ -9,8 +9,6 @@ typealias LoadingIndicatorProps = Props
 val LoadingIndicator = FC<LoadingIndicatorProps> {
     val users = useContext(UsersContext)
 
-    when {
-        users.isEmpty() -> +"Loading..."
-        else -> +""
-    }
+    if (users.isEmpty())
+        +"Loading..."
 }

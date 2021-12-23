@@ -17,6 +17,7 @@ val UserInfo = FC<UserInfoProps> {
             display = Display.grid
             gridAutoFlow = GridAutoFlow.column
         }
+
         UserTable()
         UserPanel()
     }

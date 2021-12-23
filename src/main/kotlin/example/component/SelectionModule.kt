@@ -17,6 +17,7 @@ val SelectionModule = FC<SelectionModuleProps> { props ->
     val selection = useMemo(selectedKey, setSelectedKey) {
         Selection(selectedKey, setSelectedKey)
     }
+
     SelectionContext.Provider(selection) {
         props.children()
     }
