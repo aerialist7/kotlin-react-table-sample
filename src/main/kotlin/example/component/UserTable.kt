@@ -1,10 +1,11 @@
 package example.component
 
-import example.Colors
 import csstype.*
+import example.Colors
 import example.data.User
 import kotlinext.js.jso
-import react.*
+import react.FC
+import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.table
@@ -16,10 +17,21 @@ import react.dom.html.ReactHTML.tr
 import react.table.RenderType
 import react.table.columns
 import react.table.useTable
+import react.useCallback
+import react.useContext
 
-typealias UserTableProps = Props
+private val COLUMNS = columns<User> {
+    column<String> {
+        header = "Name"
+        accessorFunction = { it.name }
+    }
+    column<String> {
+        header = "E-mail"
+        accessorFunction = { it.email }
+    }
+}
 
-val UserTable = FC<UserTableProps> {
+val UserTable = FC<Props> {
     val users = useContext(UsersContext)
     val (_, setSelectionKey) = useContext(SelectionContext)
 
@@ -27,30 +39,15 @@ val UserTable = FC<UserTableProps> {
         setSelectionKey(user.username)
     }
 
-    val columns = useMemo {
-        columns<User> {
-            column<String> {
-                header = "Name"
-                accessorFunction = { it.name }
-            }
-            column<String> {
-                header = "E-mail"
-                accessorFunction = { it.email }
-            }
-        }
-    }
-
     val table = useTable<User>(
         options = jso {
-            this.data = users
-            this.columns = columns
+            data = users
+            columns = COLUMNS
         }
     )
 
     div {
         table {
-            table.getTableProps()
-
             css {
                 width = 400.px
                 borderSpacing = 0.px
@@ -59,23 +56,25 @@ val UserTable = FC<UserTableProps> {
                 border = solid(Colors.Stroke.Gray, 2)
                 margin = Length.auto
             }
+
+            +table.getTableProps()
+
             thead {
                 css {
                     color = Colors.Text.Gray
                     fontSize = 18.px
                     backgroundColor = Colors.Background.Gray
                 }
+
                 for (headerGroup in table.headerGroups) {
                     tr {
-                        headerGroup.getHeaderGroupProps()
+                        +headerGroup.getHeaderGroupProps()
 
                         for (h in headerGroup.headers) {
                             val originalHeader = h.placeholderOf
                             val header = originalHeader ?: h
 
                             th {
-                                header.getHeaderProps()
-
                                 css {
                                     fontWeight = FontWeight.normal
                                     padding = Padding(4.px, 12.px)
@@ -89,27 +88,28 @@ val UserTable = FC<UserTableProps> {
                                         borderRight = LineStyle.none
                                     }
                                 }
+
+                                +header.getHeaderProps()
                                 +header.render(RenderType.Header)
                             }
                         }
                     }
                 }
             }
-            tbody {
-                table.getTableBodyProps()
 
+            tbody {
                 css {
                     color = Colors.Text.Black
                     backgroundColor = Colors.Background.White
                     textAlign = TextAlign.start
                 }
+
+                +table.getTableBodyProps()
+
                 for (row in table.rows) {
                     table.prepareRow(row)
 
                     tr {
-                        row.getRowProps()
-                        onClick = { onRowClick(row.original) }
-
                         css {
                             fontSize = 16.px
                             cursor = Cursor.pointer
@@ -118,14 +118,17 @@ val UserTable = FC<UserTableProps> {
                                 backgroundColor = Colors.Background.Gray
                             }
                         }
+
+                        +row.getRowProps()
+                        onClick = { onRowClick(row.original) }
+
                         for (cell in row.cells) {
                             td {
-                                cell.getCellProps()
-
                                 css {
                                     padding = Padding(10.px, 12.px)
                                 }
 
+                                +cell.getCellProps()
                                 +cell.render(RenderType.Cell)
                             }
                         }
