@@ -1,6 +1,8 @@
 package example.component
 
 import csstype.*
+import csstype.Length.Companion.auto
+import csstype.LineStyle.solid
 import example.Colors
 import example.data.User
 import kotlinext.js.jso
@@ -53,8 +55,8 @@ val UserTable = FC<Props> {
                 borderSpacing = 0.px
                 borderCollapse = BorderCollapse.collapse
                 whiteSpace = WhiteSpace.nowrap
-                border = solid(Colors.Stroke.Gray, 2)
-                margin = Length.auto
+                border = Border(2.px, solid, Colors.Stroke.Gray)
+                margin = auto
             }
 
             +table.getTableProps()
@@ -78,10 +80,10 @@ val UserTable = FC<Props> {
                                 css {
                                     fontWeight = FontWeight.normal
                                     padding = Padding(4.px, 12.px)
-                                    borderRight = solid(Colors.Stroke.Gray)
+                                    borderRight = Border(1.px, solid, Colors.Stroke.Gray)
 
                                     if (header.columns != null) {
-                                        borderBottom = solid(Colors.Stroke.Gray)
+                                        borderBottom = Border(1.px, solid, Colors.Stroke.Gray)
                                     }
 
                                     lastChild {
@@ -113,7 +115,7 @@ val UserTable = FC<Props> {
                         css {
                             fontSize = 16.px
                             cursor = Cursor.pointer
-                            borderBottom = solid(Colors.Stroke.LightGray)
+                            borderBottom = Border(1.px, solid, Colors.Stroke.LightGray)
                             hover {
                                 backgroundColor = Colors.Background.Gray
                             }
@@ -138,10 +140,3 @@ val UserTable = FC<Props> {
         }
     }
 }
-
-private fun solid(
-    color: Color,
-    length: Int = 1,
-): Border =
-    "${length}px solid $color"
-        .unsafeCast<Border>()
