@@ -7,7 +7,14 @@ import react.Props
 import react.create
 import react.dom.render
 
-val Application = FC<Props> {
+fun main() {
+    val container = document.createElement("div")
+    document.body!!.appendChild(container)
+
+    render(App.create(), container)
+}
+
+private val App = FC<Props> {
     UsersModule {
         SelectionModule {
             Header()
@@ -15,11 +22,4 @@ val Application = FC<Props> {
             UserInfo()
         }
     }
-}
-
-fun main() {
-    val container = document.createElement("div")
-    document.body!!.appendChild(container)
-
-    render(Application.create(), container)
 }
