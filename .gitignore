@@ -5,5 +5,3 @@
 # Gradle
 .gradle
 build/
-
-yarn.lock
