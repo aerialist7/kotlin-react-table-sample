@@ -5,7 +5,7 @@ import csstype.Length.Companion.auto
 import csstype.LineStyle.solid
 import example.Colors
 import example.data.User
-import kotlinext.js.jso
+import kotlinx.js.jso
 import react.FC
 import react.Props
 import react.css.css
