@@ -14,9 +14,8 @@ dependencies {
     implementation(kotlinw("react"))
     implementation(kotlinw("react-dom"))
     implementation(kotlinw("react-css"))
+    implementation(kotlinw("react-query"))
     implementation(kotlinw("react-table"))
-
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
 }
 
 kotlin.js {

@@ -2,27 +2,17 @@ package example.hook
 
 import example.data.Users
 import kotlinx.browser.window
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.await
-import kotlinx.coroutines.launch
-import react.useEffectOnce
-import react.useState
+import react.query.useQuery
+import kotlin.js.Promise
 
 fun useUsers(): Users {
-    var data by useState<Users>(emptyArray())
-
-    useEffectOnce {
-        val job = GlobalScope.launch {
-            data = getUsers()
-        }
-        cleanup(job::cancel)
-    }
-
-    return data
+    return useQuery<Users, Error, Users, String>(
+        queryKey = "users",
+        queryFn = { getUsers() }
+    ).data ?: emptyArray()
 }
 
-private suspend fun getUsers(): Users =
+private fun getUsers(): Promise<Users> =
     window.fetch("https://jsonplaceholder.typicode.com/users")
         .then { it.json() }
         .then { it.unsafeCast<Users>() }
-        .await()

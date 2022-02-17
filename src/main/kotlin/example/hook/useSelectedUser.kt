@@ -14,4 +14,3 @@ fun useSelectedUser(): User? {
         users.find { it.username == selectedKey }
     }
 }
-

@@ -16,5 +16,4 @@ val UsersModule = FC<UserModuleProps> { props ->
     UsersContext.Provider(users) {
         props.children()
     }
-
 }

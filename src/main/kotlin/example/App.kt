@@ -6,6 +6,8 @@ import react.FC
 import react.Props
 import react.create
 import react.dom.render
+import react.query.QueryClient
+import react.query.QueryClientProvider
 
 fun main() {
     val container = document.createElement("div")
@@ -15,11 +17,18 @@ fun main() {
 }
 
 private val App = FC<Props> {
-    UsersModule {
-        SelectionModule {
-            Header()
-            LoadingIndicator()
-            UserInfo()
+    QueryClientProvider {
+        client = queryClient
+
+        UsersModule {
+            SelectionModule {
+                Header()
+                LoadingIndicator()
+                UserInfo()
+            }
         }
     }
 }
+
+private val queryClient = QueryClient()
+
