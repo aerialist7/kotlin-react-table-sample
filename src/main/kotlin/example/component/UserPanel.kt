@@ -6,6 +6,7 @@ import csstype.WhiteSpace
 import csstype.px
 import example.Colors
 import example.hook.useSelectedUser
+import example.hook.useUserDelete
 import react.FC
 import react.Props
 import react.css.css
@@ -16,6 +17,7 @@ typealias UserPanelProps = Props
 
 val UserPanel = FC<UserPanelProps> {
     val user = useSelectedUser()
+    val userDeleteMutation = useUserDelete()
 
     div {
         div {
@@ -26,6 +28,8 @@ val UserPanel = FC<UserPanelProps> {
                     marginLeft = 20.px
                 }
                 disabled = user == null
+                onClick = { userDeleteMutation.asDynamic().mutate() as Unit }
+
                 +"Delete"
             }
         }
