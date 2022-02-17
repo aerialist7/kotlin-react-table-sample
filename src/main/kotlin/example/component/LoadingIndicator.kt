@@ -1,15 +1,14 @@
 package example.component
 
-import example.QueryKeys
+import example.hook.useUsers
 import react.FC
 import react.Props
-import react.query.useIsFetching
 
 typealias LoadingIndicatorProps = Props
 
 val LoadingIndicator = FC<LoadingIndicatorProps> {
-    val isFetchingUsers = useIsFetching(QueryKeys.USERS.name)
+    val users = useUsers()
 
-    if (isFetchingUsers != 0)
+    if (users.isEmpty())
         +"Loading..."
 }

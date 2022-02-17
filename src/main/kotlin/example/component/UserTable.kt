@@ -4,9 +4,8 @@ import csstype.*
 import csstype.Length.Companion.auto
 import csstype.LineStyle.solid
 import example.Colors
-import example.QueryKeys
 import example.data.User
-import example.data.Users
+import example.hook.useUsers
 import kotlinx.js.jso
 import react.FC
 import react.Props
@@ -18,7 +17,6 @@ import react.dom.html.ReactHTML.td
 import react.dom.html.ReactHTML.th
 import react.dom.html.ReactHTML.thead
 import react.dom.html.ReactHTML.tr
-import react.query.useQueryClient
 import react.table.RenderType
 import react.table.columns
 import react.table.useTable
@@ -37,7 +35,7 @@ private val COLUMNS = columns<User> {
 }
 
 val UserTable = FC<Props> {
-    val users = useQueryClient().getQueryData<Users>(QueryKeys.USERS.name)
+    val users = useUsers()
     val (_, setSelectionKey) = useContext(SelectionContext)
 
     val onRowClick = useCallback { user: User ->
@@ -46,7 +44,7 @@ val UserTable = FC<Props> {
 
     val table = useTable<User>(
         options = jso {
-            data = users ?: emptyArray()
+            data = users
             columns = COLUMNS
         }
     )

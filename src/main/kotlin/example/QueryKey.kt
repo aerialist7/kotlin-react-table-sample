@@ -1,6 +1,6 @@
 package example
 
-enum class QueryKeys {
+enum class QueryKey {
     USERS,
 
     ;
