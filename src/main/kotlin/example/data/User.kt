@@ -1,7 +1,7 @@
 package example.data
 
 external interface User {
-    val username: Key
+    val id: Key
     val name: String
     val email: String
     val phone: String
