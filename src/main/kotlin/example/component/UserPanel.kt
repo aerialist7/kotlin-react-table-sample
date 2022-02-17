@@ -9,6 +9,7 @@ import example.hook.useSelectedUser
 import react.FC
 import react.Props
 import react.css.css
+import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
 
 typealias UserPanelProps = Props
@@ -18,7 +19,15 @@ val UserPanel = FC<UserPanelProps> {
 
     div {
         div {
-            +"Additional User Information"
+            +"User Information"
+
+            button {
+                css {
+                    marginLeft = 20.px
+                }
+                disabled = user == null
+                +"Delete"
+            }
         }
 
         div {

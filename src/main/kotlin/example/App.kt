@@ -31,4 +31,3 @@ private val App = FC<Props> {
 }
 
 private val queryClient = QueryClient()
-
