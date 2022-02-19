@@ -4,20 +4,21 @@ import example.QueryKey
 import example.data.Key
 import kotlinx.browser.window
 import kotlinx.js.jso
-import react.query.MutateFunction
 import react.query.useMutation
 import react.query.useQueryClient
 import kotlin.js.Promise
 
-typealias DeleteUserHandler = MutateFunction<Unit, Error, Key, Nothing>
+typealias DeleteUser = (Key) -> Unit
 
-fun useDeleteUser(): DeleteUserHandler {
+fun useDeleteUser(): DeleteUser {
     val queryClient = useQueryClient()
     val mutation = useMutation<Unit, Error, Key, Nothing>(
         mutationFn = { userId -> deleteUser(userId) },
         options = jso { onSuccess = { _, _, _ -> queryClient.invalidateQueries<Nothing>(QueryKey.USERS.name) } }
     )
-    return mutation.mutate
+    return { userId ->
+        mutation.mutate(userId, jso())
+    }
 }
 
 private fun deleteUser(id: Key): Promise<Unit> =
