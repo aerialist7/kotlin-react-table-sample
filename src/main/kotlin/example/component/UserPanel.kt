@@ -17,7 +17,7 @@ typealias UserPanelProps = Props
 
 val UserPanel = FC<UserPanelProps> {
     val user = useSelectedUser()
-    val userDeleteMutation = useUserDelete()
+    val mutateOnUserDelete = useUserDelete()
 
     div {
         div {
@@ -28,7 +28,7 @@ val UserPanel = FC<UserPanelProps> {
                     marginLeft = 20.px
                 }
                 disabled = user == null
-                onClick = { userDeleteMutation.asDynamic().mutate() as Unit }
+                onClick = { mutateOnUserDelete(user?.id ?: "", null) }
 
                 +"Delete"
             }
