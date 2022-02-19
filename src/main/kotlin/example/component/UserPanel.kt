@@ -6,17 +6,17 @@ import csstype.WhiteSpace
 import csstype.px
 import example.Colors
 import example.hook.useDeleteUser
-import example.hook.useSelectedUser
 import react.FC
 import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
+import react.useContext
 
 typealias UserPanelProps = Props
 
 val UserPanel = FC<UserPanelProps> {
-    val selectedUser = useSelectedUser()
+    val selectedUser by useContext(SelectedUserContext)
     val deleteUser = useDeleteUser()
 
     div {

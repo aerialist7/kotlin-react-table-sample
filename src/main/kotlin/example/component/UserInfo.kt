@@ -18,7 +18,9 @@ val UserInfo = FC<UserInfoProps> {
             gridAutoFlow = GridAutoFlow.column
         }
 
-        UserTable()
-        UserPanel()
+        SelectedUserModule {
+            UserTable()
+            UserPanel()
+        }
     }
 }

@@ -22,7 +22,6 @@ import react.dom.html.ReactHTML.tr
 import react.table.RenderType
 import react.table.columns
 import react.table.useTable
-import react.useCallback
 import react.useContext
 import kotlin.random.Random.Default.nextInt
 
@@ -40,11 +39,7 @@ private val COLUMNS = columns<User> {
 val UserTable = FC<Props> {
     val users = useUsers()
     val createUser = useCreateUser()
-    val (_, setSelectionKey) = useContext(SelectionContext)
-
-    val onRowClick = useCallback { user: User ->
-        setSelectionKey(user.id)
-    }
+    var selectedUser by useContext(SelectedUserContext)
 
     val table = useTable<User>(
         options = jso {
@@ -133,7 +128,7 @@ val UserTable = FC<Props> {
                         }
 
                         +row.getRowProps()
-                        onClick = { onRowClick(row.original) }
+                        onClick = { selectedUser = row.original }
 
                         for (cell in row.cells) {
                             td {

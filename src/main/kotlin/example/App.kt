@@ -2,7 +2,6 @@ package example
 
 import example.component.Header
 import example.component.LoadingIndicator
-import example.component.SelectionModule
 import example.component.UserInfo
 import kotlinx.browser.document
 import react.FC
@@ -23,11 +22,9 @@ private val App = FC<Props> {
     QueryClientProvider {
         client = queryClient
 
-        SelectionModule {
-            Header()
-            LoadingIndicator()
-            UserInfo()
-        }
+        Header()
+        LoadingIndicator()
+        UserInfo()
     }
 }
 
