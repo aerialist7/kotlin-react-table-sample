@@ -5,8 +5,8 @@ import csstype.LineStyle
 import csstype.WhiteSpace
 import csstype.px
 import example.Colors
+import example.hook.useDeleteUser
 import example.hook.useSelectedUser
-import example.hook.useUserDelete
 import react.FC
 import react.Props
 import react.css.css
@@ -16,8 +16,8 @@ import react.dom.html.ReactHTML.div
 typealias UserPanelProps = Props
 
 val UserPanel = FC<UserPanelProps> {
-    val user = useSelectedUser()
-    val mutateOnUserDelete = useUserDelete()
+    val selectedUser = useSelectedUser()
+    val deleteUser = useDeleteUser()
 
     div {
         div {
@@ -27,8 +27,8 @@ val UserPanel = FC<UserPanelProps> {
                 css {
                     marginLeft = 20.px
                 }
-                disabled = user == null
-                onClick = { mutateOnUserDelete(user?.id ?: "", null) }
+                disabled = selectedUser == null
+                onClick = { deleteUser(selectedUser!!.id, null) }
 
                 +"Delete"
             }
@@ -47,19 +47,19 @@ val UserPanel = FC<UserPanelProps> {
             }
 
             div {
-                +"Name: ${user?.name ?: "—"}"
+                +"Name: ${selectedUser?.name ?: "—"}"
             }
 
             div {
-                +"E-mail: ${user?.email ?: "—"}"
+                +"E-mail: ${selectedUser?.email ?: "—"}"
             }
 
             div {
-                +"Phone: ${user?.phone ?: "—"}"
+                +"Phone: ${selectedUser?.phone ?: "—"}"
             }
 
             div {
-                +"Website: ${user?.website ?: "—"}"
+                +"Website: ${selectedUser?.website ?: "—"}"
             }
         }
     }

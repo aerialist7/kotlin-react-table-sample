@@ -9,7 +9,9 @@ import react.query.useMutation
 import react.query.useQueryClient
 import kotlin.js.Promise
 
-fun useUserDelete(): MutateFunction<Unit, Error, Key, Nothing> {
+typealias DeleteUserHandler = MutateFunction<Unit, Error, Key, Nothing>
+
+fun useDeleteUser(): DeleteUserHandler {
     val queryClient = useQueryClient()
     val mutation = useMutation<Unit, Error, Key, Nothing>(
         mutationFn = { userId -> deleteUser(userId) },
@@ -19,5 +21,7 @@ fun useUserDelete(): MutateFunction<Unit, Error, Key, Nothing> {
 }
 
 private fun deleteUser(id: Key): Promise<Unit> =
-    window.fetch("https://jsonplaceholder.typicode.com/users/${id}", jso { method = "DELETE" })
-        .then {}
+    window.fetch(
+        input = "https://jsonplaceholder.typicode.com/users/${id}",
+        init = jso { method = "DELETE" }
+    ).then {}
