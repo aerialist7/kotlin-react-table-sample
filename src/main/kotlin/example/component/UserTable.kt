@@ -5,11 +5,13 @@ import csstype.Length.Companion.auto
 import csstype.LineStyle.solid
 import example.Colors
 import example.data.User
+import example.hook.useCreateUser
 import example.hook.useUsers
 import kotlinx.js.jso
 import react.FC
 import react.Props
 import react.css.css
+import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.table
 import react.dom.html.ReactHTML.tbody
@@ -22,6 +24,7 @@ import react.table.columns
 import react.table.useTable
 import react.useCallback
 import react.useContext
+import kotlin.random.Random.Default.nextInt
 
 private val COLUMNS = columns<User> {
     column<String> {
@@ -36,6 +39,7 @@ private val COLUMNS = columns<User> {
 
 val UserTable = FC<Props> {
     val users = useUsers()
+    val createUser = useCreateUser()
     val (_, setSelectionKey) = useContext(SelectionContext)
 
     val onRowClick = useCallback { user: User ->
@@ -50,6 +54,12 @@ val UserTable = FC<Props> {
     )
 
     div {
+        button {
+            onClick = { createUser(jso { id = "${nextInt()}" }) }
+
+            +"Create New"
+        }
+
         table {
             css {
                 width = 400.px
