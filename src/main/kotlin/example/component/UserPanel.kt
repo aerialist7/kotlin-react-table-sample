@@ -6,6 +6,7 @@ import csstype.WhiteSpace
 import csstype.px
 import example.Colors
 import example.hook.useDeleteUser
+import example.hook.useUpdateUser
 import react.FC
 import react.Props
 import react.css.css
@@ -17,11 +18,22 @@ typealias UserPanelProps = Props
 
 val UserPanel = FC<UserPanelProps> {
     val selectedUser by useContext(SelectedUserContext)
+    val updateUser = useUpdateUser()
     val deleteUser = useDeleteUser()
 
     div {
         div {
             +"User Information"
+
+            button {
+                css {
+                    marginLeft = 20.px
+                }
+                disabled = selectedUser == null
+                onClick = { updateUser(selectedUser!!.apply { name += "_Updated" }) }
+
+                +"Update"
+            }
 
             button {
                 css {
