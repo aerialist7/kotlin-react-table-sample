@@ -40,7 +40,7 @@ val UserPanel = FC<UserPanelProps> {
                     marginLeft = 20.px
                 }
                 disabled = selectedUser == null
-                onClick = { deleteUser(selectedUser!!.id) }
+                onClick = { deleteUser(selectedUser!!) }
 
                 +"Delete"
             }
