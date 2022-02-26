@@ -1,8 +1,9 @@
 package example.component
 
 import csstype.*
-import csstype.Length.Companion.auto
-import csstype.LineStyle.solid
+import csstype.Auto.auto
+import csstype.LineStyle.Companion.solid
+import csstype.None.none
 import example.Colors
 import example.data.User
 import example.hook.useCreateUser
@@ -93,7 +94,7 @@ val UserTable = FC<Props> {
                                     }
 
                                     lastChild {
-                                        borderRight = LineStyle.none
+                                        borderRight = none
                                     }
                                 }
 
