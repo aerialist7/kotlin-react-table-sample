@@ -9,6 +9,6 @@ val SelectedUserModule = FC<PropsWithChildren> { props ->
     val selectedUserState = useState<User>()
 
     SelectedUserContext.Provider(selectedUserState) {
-        props.children()
+        +props.children
     }
 }
