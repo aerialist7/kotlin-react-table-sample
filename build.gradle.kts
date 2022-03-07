@@ -11,7 +11,7 @@ fun kotlinw(target: String): String =
 
 dependencies {
     implementation(enforcedPlatform(kotlinw("wrappers-bom:0.0.1-pre.314-kotlin-1.6.10")))
-  implementation(kotlinw("react"))
+    implementation(kotlinw("react"))
     implementation(kotlinw("react-dom"))
     implementation(kotlinw("react-css"))
     implementation(kotlinw("react-query"))
