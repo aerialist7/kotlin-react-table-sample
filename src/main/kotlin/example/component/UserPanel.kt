@@ -17,7 +17,7 @@ import react.useContext
 typealias UserPanelProps = Props
 
 val UserPanel = FC<UserPanelProps> {
-    val selectedUser by useContext(SelectedUserContext)
+    val selectedUser = useContext(SelectedUserContext)
     val updateUser = useUpdateUser()
     val deleteUser = useDeleteUser()
 

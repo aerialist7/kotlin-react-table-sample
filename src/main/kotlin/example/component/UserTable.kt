@@ -40,7 +40,7 @@ private val COLUMNS = columns<User> {
 val UserTable = FC<Props> {
     val users = useUsers()
     val createUser = useCreateUser()
-    var selectedUser by useContext(SelectedUserContext)
+    val setSelectedUser = useContext(SetSelectedUserContext)
 
     val table = useTable<User>(
         options = jso {
@@ -129,7 +129,7 @@ val UserTable = FC<Props> {
                         }
 
                         +row.getRowProps()
-                        onClick = { selectedUser = row.original }
+                        onClick = { setSelectedUser(row.original) }
 
                         for (cell in row.cells) {
                             td {
