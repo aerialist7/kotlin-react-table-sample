@@ -4,10 +4,10 @@ import csstype.FontWeight
 import csstype.Overflow
 import csstype.Padding
 import csstype.px
+import emotion.react.css
 import example.Colors
 import react.FC
 import react.Props
-import react.css.css
 import react.dom.html.ReactHTML.a
 import react.dom.html.ReactHTML.div
 

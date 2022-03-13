@@ -4,6 +4,7 @@ import csstype.*
 import csstype.Auto.auto
 import csstype.LineStyle.Companion.solid
 import csstype.None.none
+import emotion.react.css
 import example.Colors
 import example.data.User
 import example.hook.useCreateUser
@@ -11,7 +12,6 @@ import example.hook.useUsers
 import kotlinx.js.jso
 import react.FC
 import react.Props
-import react.css.css
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.table
