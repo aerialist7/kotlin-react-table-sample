@@ -1,9 +1,9 @@
-package example.hook
+package team.karakum.hooks
 
-import example.QueryKey
-import example.data.Users
 import kotlinx.browser.window
 import react.query.useQuery
+import team.karakum.QueryKey
+import team.karakum.entities.Users
 import kotlin.js.Promise
 
 fun useUsers(): Users {

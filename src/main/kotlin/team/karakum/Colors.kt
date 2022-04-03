@@ -1,4 +1,4 @@
-package example
+package team.karakum
 
 import csstype.Color
 

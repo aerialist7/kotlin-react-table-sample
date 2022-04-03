@@ -1,4 +1,4 @@
-package example.data
+package team.karakum.entities
 
 external interface User {
     var id: Key

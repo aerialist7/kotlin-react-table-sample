@@ -1,18 +1,18 @@
-package example.component
+package team.karakum.components
 
 import csstype.BorderCollapse
 import csstype.LineStyle
 import csstype.WhiteSpace
 import csstype.px
 import emotion.react.css
-import example.Colors
-import example.hook.useDeleteUser
-import example.hook.useUpdateUser
 import react.FC
 import react.Props
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
 import react.useContext
+import team.karakum.Colors
+import team.karakum.hooks.useDeleteUser
+import team.karakum.hooks.useUpdateUser
 
 typealias UserPanelProps = Props
 

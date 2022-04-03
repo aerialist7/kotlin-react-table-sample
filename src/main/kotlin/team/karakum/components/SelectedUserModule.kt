@@ -1,7 +1,7 @@
-package example.component
+package team.karakum.components
 
-import example.data.User
 import react.*
+import team.karakum.entities.User
 
 val SelectedUserContext = createContext<User?>()
 val SetSelectedUserContext = createContext<StateSetter<User?>>()

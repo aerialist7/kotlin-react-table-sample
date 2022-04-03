@@ -1,8 +1,8 @@
-package example.component
+package team.karakum.components
 
-import example.hook.useUsers
 import react.FC
 import react.Props
+import team.karakum.hooks.useUsers
 
 typealias LoadingIndicatorProps = Props
 

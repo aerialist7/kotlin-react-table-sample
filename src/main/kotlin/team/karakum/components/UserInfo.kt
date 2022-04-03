@@ -1,4 +1,4 @@
-package example.component
+package team.karakum.components
 
 import csstype.Display
 import csstype.GridAutoFlow

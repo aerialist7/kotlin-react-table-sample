@@ -1,14 +1,10 @@
-package example.component
+package team.karakum.components
 
 import csstype.*
 import csstype.Auto.auto
 import csstype.LineStyle.Companion.solid
 import csstype.None.none
 import emotion.react.css
-import example.Colors
-import example.data.User
-import example.hook.useCreateUser
-import example.hook.useUsers
 import kotlinx.js.jso
 import react.FC
 import react.Props
@@ -24,6 +20,10 @@ import react.table.RenderType
 import react.table.columns
 import react.table.useTable
 import react.useContext
+import team.karakum.Colors
+import team.karakum.entities.User
+import team.karakum.hooks.useCreateUser
+import team.karakum.hooks.useUsers
 import kotlin.random.Random.Default.nextInt
 
 private val COLUMNS = columns<User> {
