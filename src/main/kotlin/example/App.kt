@@ -7,16 +7,16 @@ import kotlinx.browser.document
 import react.FC
 import react.Props
 import react.create
-import react.dom.render
+import react.dom.client.createRoot
 import react.query.QueryClient
 import react.query.QueryClientProvider
 
 fun main() {
-    val container = document.createElement("div")
-    document.body!!.appendChild(container)
-
-    render(App.create(), container)
+    createRoot(document.createElement("div").also { document.body!!.appendChild(it) })
+        .render(App.create())
 }
+
+private val queryClient = QueryClient()
 
 private val App = FC<Props> {
     QueryClientProvider {
@@ -27,5 +27,3 @@ private val App = FC<Props> {
         UserInfo()
     }
 }
-
-private val queryClient = QueryClient()
