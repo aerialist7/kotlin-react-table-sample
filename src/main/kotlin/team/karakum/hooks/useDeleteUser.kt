@@ -1,25 +1,25 @@
 package team.karakum.hooks
 
 import kotlinx.browser.window
+import kotlinx.js.Void
 import kotlinx.js.jso
+import react.query.QueryKey
 import react.query.useMutation
 import react.query.useQueryClient
+import team.karakum.USERS_QUERY_KEY
 import team.karakum.entities.User
 import kotlin.js.Promise
 
 typealias DeleteUser = (User) -> Unit
 
 fun useDeleteUser(): DeleteUser {
-    val queryClient = useQueryClient()
-    val mutation = useMutation<Unit, Error, User, Nothing>(
+    val client = useQueryClient()
+    return useMutation<Unit, Error, User, QueryKey>(
         mutationFn = { user -> deleteUser(user) },
         options = jso {
-            onSuccess = { _, _, _ -> queryClient.invalidateQueries<Nothing>(team.karakum.QueryKey.USERS.name) }
+            onSuccess = { _, _, _ -> client.invalidateQueries<Void>(USERS_QUERY_KEY) }
         }
-    )
-    return { user ->
-        mutation.mutate(user, jso())
-    }
+    ).mutate.unsafeCast<DeleteUser>()
 }
 
 private fun deleteUser(user: User): Promise<Unit> =

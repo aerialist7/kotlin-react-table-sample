@@ -1,7 +1,5 @@
 package team.karakum
 
-enum class QueryKey {
-    USERS,
+import react.query.QueryKey
 
-    ;
-}
+val USERS_QUERY_KEY = QueryKey<QueryKey>("users")

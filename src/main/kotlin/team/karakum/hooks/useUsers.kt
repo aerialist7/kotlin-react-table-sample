@@ -1,20 +1,21 @@
 package team.karakum.hooks
 
 import kotlinx.browser.window
+import react.query.QueryKey
 import react.query.useQuery
-import team.karakum.QueryKey
+import team.karakum.USERS_QUERY_KEY
 import team.karakum.entities.Users
 import kotlin.js.Promise
 
 fun useUsers(): Users {
-    val result = useQuery<Users, Error, Users, String>(
-        queryKey = QueryKey.USERS.name,
-        queryFn = { readUsers() }
+    val result = useQuery<Users, Error, Users, QueryKey>(
+        queryKey = USERS_QUERY_KEY,
+        queryFn = { getUsers() }
     )
     return result.data ?: emptyArray()
 }
 
-private fun readUsers(): Promise<Users> =
+private fun getUsers(): Promise<Users> =
     window.fetch("https://jsonplaceholder.typicode.com/users")
         .then { it.json() }
         .then { it.unsafeCast<Users>() }
