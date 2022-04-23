@@ -1,5 +1,5 @@
 plugins {
-    kotlin("js") version "1.6.20"
+    kotlin("js") version "1.6.21"
 }
 
 repositories {
@@ -10,10 +10,10 @@ fun kotlinw(target: String): String =
     "org.jetbrains.kotlin-wrappers:kotlin-$target"
 
 dependencies {
-    implementation(enforcedPlatform(kotlinw("wrappers-bom:0.0.1-pre.331-kotlin-1.6.20")))
+    implementation(enforcedPlatform(kotlinw("wrappers-bom:0.0.1-pre.332-kotlin-1.6.21")))
     implementation(kotlinw("react"))
     implementation(kotlinw("react-dom"))
-    implementation(kotlinw("react-css"))
+    implementation(kotlinw("emotion"))
     implementation(kotlinw("react-query"))
     implementation(kotlinw("react-table"))
 }
