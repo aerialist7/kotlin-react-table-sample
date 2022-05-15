@@ -9,8 +9,8 @@ val SetSelectedUserContext = createContext<StateSetter<User?>>()
 val SelectedUserModule = FC<PropsWithChildren> { props ->
     val (user, setUser) = useState<User>()
 
-    SelectedUserContext.Provider(user) {
-        SetSelectedUserContext.Provider(setUser) {
+    SelectedUserContext(user) {
+        SetSelectedUserContext(setUser) {
             +props.children
         }
     }
