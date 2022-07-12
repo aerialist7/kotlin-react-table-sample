@@ -6,12 +6,12 @@ fun kotlinw(target: String): String =
     "org.jetbrains.kotlin-wrappers:kotlin-$target"
 
 dependencies {
-    implementation(enforcedPlatform(kotlinw("wrappers-bom:1.0.0-pre.351")))
+    implementation(enforcedPlatform(kotlinw("wrappers-bom:1.0.0-pre.354")))
     implementation(kotlinw("react"))
     implementation(kotlinw("react-dom"))
     implementation(kotlinw("emotion"))
     implementation(kotlinw("react-query"))
-    implementation(kotlinw("react-table"))
+    implementation(kotlinw("tanstack-react-table"))
 }
 
 kotlin.js {

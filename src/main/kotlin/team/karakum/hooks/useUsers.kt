@@ -1,9 +1,12 @@
 package team.karakum.hooks
 
+import csstype.HtmlAttributes
 import kotlinx.browser.window
+import kotlinx.js.jso
 import react.query.QueryKey
 import react.query.useQuery
 import team.karakum.USERS_QUERY_KEY
+import team.karakum.entities.User
 import team.karakum.entities.Users
 import kotlin.js.Promise
 
