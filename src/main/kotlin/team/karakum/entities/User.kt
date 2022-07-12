@@ -1,8 +1,6 @@
 package team.karakum.entities
 
-import tanstack.table.core.RowData
-
-external interface User:RowData {
+external interface User {
     var id: Key
     var name: String
     var email: String
