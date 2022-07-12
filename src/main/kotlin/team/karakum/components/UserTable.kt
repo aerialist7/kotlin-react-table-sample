@@ -23,7 +23,10 @@ import react.useContext
 import tanstack.react.table.ColumnDefTemplate
 import tanstack.react.table.flexRender
 import tanstack.react.table.useReactTable
-import tanstack.table.core.*
+import tanstack.table.core.ColumnDef
+import tanstack.table.core.ColumnDefTemplate
+import tanstack.table.core.TableOptions
+import tanstack.table.core.getCoreRowModel
 import team.karakum.Colors
 import team.karakum.entities.User
 import team.karakum.hooks.useCreateUser
@@ -54,7 +57,7 @@ val UserTable = FC<Props> {
         options = jso<TableOptions<User>> {
             data = users
             columns = COLUMNS
-            getCoreRowModel = coreRowModel()
+            getCoreRowModel = getCoreRowModel()
         }
     )
 
@@ -143,11 +146,4 @@ val UserTable = FC<Props> {
             }
         }
     }
-}
-
-// TODO update after wrappers update
-private fun coreRowModel(): (Table<*>) -> () -> RowModel<*> = {
-    val table = it.unsafeCast<Table<User>>()
-    val result = getCoreRowModel<User>()(table)
-    result.unsafeCast<() -> RowModel<*>>()
 }
