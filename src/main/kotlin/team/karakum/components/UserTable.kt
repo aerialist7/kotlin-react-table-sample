@@ -16,36 +16,39 @@ import react.dom.html.ReactHTML.td
 import react.dom.html.ReactHTML.th
 import react.dom.html.ReactHTML.thead
 import react.dom.html.ReactHTML.tr
-import react.table.RenderType
-import react.table.columns
-import react.table.useTable
 import react.useContext
+import tanstack.react.table.flexRender
+import tanstack.react.table.useReactTable
+import tanstack.table.core.ColumnDef
+import tanstack.table.core.ColumnDefTemplate
+import tanstack.table.core.getCoreRowModel
 import team.karakum.Colors
 import team.karakum.entities.User
 import team.karakum.hooks.useCreateUser
 import team.karakum.hooks.useUsers
 import kotlin.random.Random.Default.nextInt
 
-private val COLUMNS = columns<User> {
-    column<String> {
-        header = "Name"
-        accessorFunction = { it.name }
-    }
-    column<String> {
-        header = "E-mail"
-        accessorFunction = { it.email }
-    }
-}
-
 val UserTable = FC<Props> {
     val users = useUsers()
     val createUser = useCreateUser()
     val setSelectedUser = useContext(SetSelectedUserContext)
 
-    val table = useTable<User>(
+    val table = useReactTable<User>(
         options = jso {
             data = users
-            columns = COLUMNS
+            columns = arrayOf<ColumnDef<User, String>>(
+                jso {
+                    id = "name"
+                    header = ColumnDefTemplate("Name")
+                    accessorFn = { row, _ -> row.name }
+                },
+                jso {
+                    id = "email"
+                    header = ColumnDefTemplate("E-mail")
+                    accessorFn = { row, _ -> row.email }
+                },
+            )
+            getCoreRowModel = getCoreRowModel()
         }
     )
 
@@ -66,8 +69,6 @@ val UserTable = FC<Props> {
                 margin = auto
             }
 
-            +table.getTableProps()
-
             thead {
                 css {
                     color = Colors.Text.Gray
@@ -75,31 +76,22 @@ val UserTable = FC<Props> {
                     backgroundColor = Colors.Background.Gray
                 }
 
-                for (headerGroup in table.headerGroups) {
+                for (headerGroup in table.getHeaderGroups()) {
                     tr {
-                        +headerGroup.getHeaderGroupProps()
-
-                        for (h in headerGroup.headers) {
-                            val originalHeader = h.placeholderOf
-                            val header = originalHeader ?: h
-
+                        for (header in headerGroup.headers) {
                             th {
                                 css {
                                     fontWeight = FontWeight.normal
                                     padding = Padding(4.px, 12.px)
                                     borderRight = Border(1.px, solid, Colors.Stroke.Gray)
-
-                                    if (header.columns != null) {
-                                        borderBottom = Border(1.px, solid, Colors.Stroke.Gray)
-                                    }
+                                    borderBottom = Border(1.px, solid, Colors.Stroke.Gray)
 
                                     lastChild {
                                         borderRight = none
                                     }
                                 }
 
-                                +header.getHeaderProps()
-                                +header.render(RenderType.Header)
+                                +flexRender(header.column.columnDef.header, header.getContext())
                             }
                         }
                     }
@@ -113,11 +105,7 @@ val UserTable = FC<Props> {
                     textAlign = TextAlign.start
                 }
 
-                +table.getTableBodyProps()
-
-                for (row in table.rows) {
-                    table.prepareRow(row)
-
+                for (row in table.getRowModel().rows) {
                     tr {
                         css {
                             fontSize = 16.px
@@ -128,17 +116,15 @@ val UserTable = FC<Props> {
                             }
                         }
 
-                        +row.getRowProps()
                         onClick = { setSelectedUser(row.original) }
 
-                        for (cell in row.cells) {
+                        for (cell in row.getVisibleCells()) {
                             td {
                                 css {
                                     padding = Padding(10.px, 12.px)
                                 }
 
-                                +cell.getCellProps()
-                                +cell.render(RenderType.Cell)
+                                +flexRender(cell.column.columnDef.cell, cell.getContext())
                             }
                         }
                     }
