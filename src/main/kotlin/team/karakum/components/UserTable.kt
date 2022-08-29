@@ -17,10 +17,11 @@ import react.dom.html.ReactHTML.th
 import react.dom.html.ReactHTML.thead
 import react.dom.html.ReactHTML.tr
 import react.useContext
-import tanstack.react.table.flexRender
+import tanstack.react.table.renderCell
+import tanstack.react.table.renderHeader
 import tanstack.react.table.useReactTable
 import tanstack.table.core.ColumnDef
-import tanstack.table.core.ColumnDefTemplate
+import tanstack.table.core.StringOrTemplateHeader
 import tanstack.table.core.getCoreRowModel
 import team.karakum.Colors
 import team.karakum.entities.User
@@ -39,12 +40,12 @@ val UserTable = FC<Props> {
             columns = arrayOf<ColumnDef<User, String>>(
                 jso {
                     id = "name"
-                    header = ColumnDefTemplate("Name")
+                    header = StringOrTemplateHeader("Name")
                     accessorFn = { row, _ -> row.name }
                 },
                 jso {
                     id = "email"
-                    header = ColumnDefTemplate("E-mail")
+                    header = StringOrTemplateHeader("E-mail")
                     accessorFn = { row, _ -> row.email }
                 },
             )
@@ -91,7 +92,7 @@ val UserTable = FC<Props> {
                                     }
                                 }
 
-                                +flexRender(header.column.columnDef.header, header.getContext())
+                                +renderHeader(header)
                             }
                         }
                     }
@@ -124,7 +125,7 @@ val UserTable = FC<Props> {
                                     padding = Padding(10.px, 12.px)
                                 }
 
-                                +flexRender(cell.column.columnDef.cell, cell.getContext())
+                                +renderCell(cell)
                             }
                         }
                     }
