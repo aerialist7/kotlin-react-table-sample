@@ -3,9 +3,9 @@ package team.karakum.hooks
 import kotlinx.browser.window
 import kotlinx.js.Void
 import kotlinx.js.jso
-import react.query.QueryKey
-import react.query.useMutation
-import react.query.useQueryClient
+import tanstack.query.core.QueryKey
+import tanstack.react.query.useMutation
+import tanstack.react.query.useQueryClient
 import team.karakum.USERS_QUERY_KEY
 import team.karakum.entities.User
 import kotlin.js.Promise

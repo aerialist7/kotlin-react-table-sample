@@ -1,8 +1,8 @@
 package team.karakum.hooks
 
 import kotlinx.browser.window
-import react.query.QueryKey
-import react.query.useQuery
+import tanstack.query.core.QueryKey
+import tanstack.react.query.useQuery
 import team.karakum.USERS_QUERY_KEY
 import team.karakum.entities.Users
 import kotlin.js.Promise

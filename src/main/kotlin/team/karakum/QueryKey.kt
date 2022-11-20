@@ -1,5 +1,5 @@
 package team.karakum
 
-import react.query.QueryKey
+import tanstack.query.core.QueryKey
 
 val USERS_QUERY_KEY = QueryKey<QueryKey>("users")
