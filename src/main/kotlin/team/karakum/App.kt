@@ -1,6 +1,8 @@
 package team.karakum
 
 import browser.document
+import dom.html.HTML.div
+import dom.html.createElement
 import react.FC
 import react.Props
 import react.create
@@ -12,7 +14,10 @@ import team.karakum.components.LoadingIndicator
 import team.karakum.components.UserInfo
 
 fun main() {
-    createRoot(document.createElement("div").also { document.body.appendChild(it) })
+    val root = document.createElement(div)
+        .also { document.body.appendChild(it) }
+
+    createRoot(root)
         .render(App.create())
 }
 
