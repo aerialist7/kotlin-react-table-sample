@@ -1,8 +1,8 @@
 package team.karakum.hooks
 
+import js.core.Void
+import js.core.jso
 import kotlinx.browser.window
-import kotlinx.js.Void
-import kotlinx.js.jso
 import tanstack.query.core.QueryKey
 import tanstack.react.query.useMutation
 import tanstack.react.query.useQueryClient

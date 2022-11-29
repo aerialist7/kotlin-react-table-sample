@@ -5,7 +5,7 @@ import csstype.Auto.auto
 import csstype.LineStyle.Companion.solid
 import csstype.None.none
 import emotion.react.css
-import kotlinx.js.jso
+import js.core.jso
 import react.FC
 import react.Props
 import react.dom.html.ReactHTML.button
