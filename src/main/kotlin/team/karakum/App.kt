@@ -2,7 +2,6 @@ package team.karakum
 
 import browser.document
 import dom.html.HTML.div
-import dom.html.createElement
 import react.FC
 import react.Props
 import react.create
