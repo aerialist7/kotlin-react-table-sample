@@ -5,6 +5,3 @@
 # Gradle
 .gradle
 build/
-
-# Kotlin/JS
-kotlin-js-store/
