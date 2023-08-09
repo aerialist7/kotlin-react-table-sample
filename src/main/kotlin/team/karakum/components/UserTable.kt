@@ -12,7 +12,7 @@ import react.dom.html.ReactHTML.td
 import react.dom.html.ReactHTML.th
 import react.dom.html.ReactHTML.thead
 import react.dom.html.ReactHTML.tr
-import react.useContext
+import react.useRequiredContext
 import tanstack.react.table.renderCell
 import tanstack.react.table.renderHeader
 import tanstack.react.table.useReactTable
@@ -32,7 +32,7 @@ import kotlin.random.Random.Default.nextInt
 val UserTable = FC<Props> {
     val users = useUsers()
     val createUser = useCreateUser()
-    val setSelectedUser = useContext(SetSelectedUserContext)
+    val setSelectedUser = useRequiredContext(SetSelectedUserContext)
 
     val table = useReactTable<User>(
         options = jso {
@@ -117,11 +117,7 @@ val UserTable = FC<Props> {
                             }
                         }
 
-                        onClick = {
-                            if (setSelectedUser != null) {
-                                setSelectedUser(row.original)
-                            }
-                        }
+                        onClick = { setSelectedUser(row.original) }
 
                         for (cell in row.getVisibleCells()) {
                             td {
