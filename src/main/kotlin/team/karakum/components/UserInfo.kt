@@ -1,12 +1,12 @@
 package team.karakum.components
 
-import csstype.Display
-import csstype.GridAutoFlow
-import csstype.px
 import emotion.react.css
 import react.FC
 import react.Props
 import react.dom.html.ReactHTML.div
+import web.cssom.Display
+import web.cssom.GridAutoFlow
+import web.cssom.px
 
 typealias UserInfoProps = Props
 

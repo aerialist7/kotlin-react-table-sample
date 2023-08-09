@@ -1,9 +1,5 @@
 package team.karakum.components
 
-import csstype.*
-import csstype.Auto.auto
-import csstype.LineStyle.Companion.solid
-import csstype.None.none
 import emotion.react.css
 import js.core.jso
 import react.FC
@@ -27,6 +23,10 @@ import team.karakum.Colors
 import team.karakum.entities.User
 import team.karakum.hooks.useCreateUser
 import team.karakum.hooks.useUsers
+import web.cssom.*
+import web.cssom.Auto.Companion.auto
+import web.cssom.LineStyle.Companion.solid
+import web.cssom.None.Companion.none
 import kotlin.random.Random.Default.nextInt
 
 val UserTable = FC<Props> {
@@ -117,7 +117,11 @@ val UserTable = FC<Props> {
                             }
                         }
 
-                        onClick = { setSelectedUser(row.original) }
+                        onClick = {
+                            if (setSelectedUser != null) {
+                                setSelectedUser(row.original)
+                            }
+                        }
 
                         for (cell in row.getVisibleCells()) {
                             td {
