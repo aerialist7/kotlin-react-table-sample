@@ -6,7 +6,7 @@ fun kotlinw(target: String): String =
     "org.jetbrains.kotlin-wrappers:kotlin-$target"
 
 dependencies {
-    implementation(enforcedPlatform(kotlinw("wrappers-bom:1.0.0-pre.477")))
+    implementation(enforcedPlatform(kotlinw("wrappers-bom:1.0.0-pre.607")))
     implementation(kotlinw("react"))
     implementation(kotlinw("react-dom"))
     implementation(kotlinw("emotion"))
@@ -20,5 +20,5 @@ kotlin.js {
 }
 
 tasks.wrapper {
-    gradleVersion = "7.6"
+    gradleVersion = "8.2.1"
 }

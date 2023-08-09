@@ -2,13 +2,13 @@ package team.karakum.hooks
 
 import js.core.Void
 import js.core.jso
-import kotlinx.browser.window
+import js.promise.Promise
 import tanstack.query.core.QueryKey
 import tanstack.react.query.useMutation
 import tanstack.react.query.useQueryClient
 import team.karakum.USERS_QUERY_KEY
 import team.karakum.entities.User
-import kotlin.js.Promise
+import web.http.fetchAsync
 
 typealias DeleteUser = (User) -> Unit
 
@@ -23,7 +23,7 @@ fun useDeleteUser(): DeleteUser {
 }
 
 private fun deleteUser(user: User): Promise<Unit> =
-    window.fetch(
+    fetchAsync(
         input = "https://jsonplaceholder.typicode.com/users/${user.id}",
         init = jso { method = "DELETE" }
     ).then {}

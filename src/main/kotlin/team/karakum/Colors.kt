@@ -1,6 +1,6 @@
 package team.karakum
 
-import csstype.Color
+import web.cssom.Color
 
 object Colors {
     object Text {

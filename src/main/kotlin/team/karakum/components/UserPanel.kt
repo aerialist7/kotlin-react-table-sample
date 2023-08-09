@@ -1,9 +1,5 @@
 package team.karakum.components
 
-import csstype.BorderCollapse
-import csstype.LineStyle
-import csstype.WhiteSpace
-import csstype.px
 import emotion.react.css
 import react.FC
 import react.Props
@@ -13,6 +9,10 @@ import react.useContext
 import team.karakum.Colors
 import team.karakum.hooks.useDeleteUser
 import team.karakum.hooks.useUpdateUser
+import web.cssom.BorderCollapse
+import web.cssom.LineStyle
+import web.cssom.WhiteSpace
+import web.cssom.px
 
 typealias UserPanelProps = Props
 
