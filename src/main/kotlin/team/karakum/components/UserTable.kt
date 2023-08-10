@@ -3,7 +3,6 @@ package team.karakum.components
 import emotion.react.css
 import js.core.jso
 import react.FC
-import react.Props
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.table
@@ -12,7 +11,6 @@ import react.dom.html.ReactHTML.td
 import react.dom.html.ReactHTML.th
 import react.dom.html.ReactHTML.thead
 import react.dom.html.ReactHTML.tr
-import react.useRequiredContext
 import tanstack.react.table.renderCell
 import tanstack.react.table.renderHeader
 import tanstack.react.table.useReactTable
@@ -29,7 +27,7 @@ import web.cssom.LineStyle.Companion.solid
 import web.cssom.None.Companion.none
 import kotlin.random.Random.Default.nextInt
 
-val UserTable = FC<Props> {
+val UserTable = FC {
     val users = useUsers()
     val createUser = useCreateUser()
     val setSelectedUser = useSetSelectedUser()

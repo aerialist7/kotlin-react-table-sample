@@ -2,10 +2,8 @@ package team.karakum.components
 
 import emotion.react.css
 import react.FC
-import react.Props
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
-import react.useContext
 import team.karakum.Colors
 import team.karakum.hooks.useDeleteUser
 import team.karakum.hooks.useUpdateUser
@@ -14,9 +12,7 @@ import web.cssom.LineStyle
 import web.cssom.WhiteSpace
 import web.cssom.px
 
-typealias UserPanelProps = Props
-
-val UserPanel = FC<UserPanelProps> {
+val UserPanel = FC {
     val selectedUser = useSelectedUser()
     val updateUser = useUpdateUser()
     val deleteUser = useDeleteUser()
