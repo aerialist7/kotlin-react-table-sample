@@ -32,7 +32,7 @@ import kotlin.random.Random.Default.nextInt
 val UserTable = FC<Props> {
     val users = useUsers()
     val createUser = useCreateUser()
-    val setSelectedUser = useRequiredContext(SetSelectedUserContext)
+    val setSelectedUser = useSetSelectedUser()
 
     val table = useReactTable<User>(
         options = jso {

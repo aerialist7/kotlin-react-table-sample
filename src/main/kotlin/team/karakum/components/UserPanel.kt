@@ -17,7 +17,7 @@ import web.cssom.px
 typealias UserPanelProps = Props
 
 val UserPanel = FC<UserPanelProps> {
-    val selectedUser = useContext(SelectedUserContext)
+    val selectedUser = useSelectedUser()
     val updateUser = useUpdateUser()
     val deleteUser = useDeleteUser()
 
