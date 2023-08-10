@@ -20,11 +20,11 @@ fun main() {
         .render(App.create())
 }
 
-private val queryClient = QueryClient()
+private val QueryClient = QueryClient()
 
 private val App = FC<Props> {
     QueryClientProvider {
-        client = queryClient
+        client = QueryClient
 
         Header()
         LoadingIndicator()
