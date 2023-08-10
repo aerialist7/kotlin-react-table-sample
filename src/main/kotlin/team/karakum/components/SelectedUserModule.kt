@@ -3,8 +3,11 @@ package team.karakum.components
 import react.*
 import team.karakum.entities.User
 
-val SelectedUserContext = createContext<User>()
-val SetSelectedUserContext = createContext<StateSetter<User?>>()
+val SelectedUserContext: Context<User?> =
+    createContext()
+
+val SetSelectedUserContext: RequiredContext<StateSetter<User?>> =
+    createRequiredContext()
 
 val SelectedUserModule = FC<PropsWithChildren> { props ->
     val (user, setUser) = useState<User>()
