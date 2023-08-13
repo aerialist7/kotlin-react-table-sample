@@ -14,7 +14,7 @@ import web.html.HTML.div
 
 fun main() {
     val root = document.createElement(div)
-        .also { document.body.appendChild(it) }
+    document.body.appendChild(root)
 
     createRoot(root)
         .render(App.create())
