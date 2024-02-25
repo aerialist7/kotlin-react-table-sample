@@ -1,5 +1,6 @@
 package team.karakum.hooks
 
+import js.objects.jso
 import js.promise.Promise
 import tanstack.query.core.QueryKey
 import tanstack.react.query.useQuery
@@ -9,8 +10,10 @@ import web.http.fetchAsync
 
 fun useUsers(): Users {
     val result = useQuery<Users, Error, Users, QueryKey>(
-        queryKey = USERS_QUERY_KEY,
-        queryFn = { getUsers() }
+        options = jso {
+            queryKey = USERS_QUERY_KEY
+            queryFn = { getUsers() }
+        },
     )
     return result.data ?: emptyArray()
 }

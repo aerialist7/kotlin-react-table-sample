@@ -1,13 +1,13 @@
 package team.karakum.hooks
 
-import js.core.Void
-import js.core.jso
+import js.objects.jso
 import js.promise.Promise
 import tanstack.query.core.QueryKey
 import tanstack.react.query.useMutation
 import tanstack.react.query.useQueryClient
 import team.karakum.USERS_QUERY_KEY
 import team.karakum.entities.User
+import web.http.BodyInit
 import web.http.fetchAsync
 
 typealias UpdateUser = (User) -> Unit
@@ -15,9 +15,15 @@ typealias UpdateUser = (User) -> Unit
 fun useUpdateUser(): UpdateUser {
     val client = useQueryClient()
     return useMutation<User, Error, User, QueryKey>(
-        mutationFn = { user -> updateUser(user) },
         options = jso {
-            onSuccess = { _, _, _ -> client.invalidateQueries<Void>(USERS_QUERY_KEY) }
+            mutationFn = { user -> updateUser(user) }
+            onSuccess = { _, _, _ ->
+                client.invalidateQueries(
+                    filters = jso {
+                        queryKey = USERS_QUERY_KEY
+                    }
+                )
+            }
         }
     ).mutate.unsafeCast<UpdateUser>()
 }
@@ -27,6 +33,6 @@ private fun updateUser(user: User): Promise<User> =
         input = "https://jsonplaceholder.typicode.com/users/${user.id}",
         init = jso {
             method = "PUT"
-            body = JSON.stringify(user)
+            body = BodyInit(JSON.stringify(user))
         }
     ).then { it.json() }.then { it.unsafeCast<User>() }

@@ -1,7 +1,7 @@
 package team.karakum.components
 
 import emotion.react.css
-import js.core.jso
+import js.objects.jso
 import react.FC
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div

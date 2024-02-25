@@ -1,7 +1,6 @@
 package team.karakum.hooks
 
-import js.core.Void
-import js.core.jso
+import js.objects.jso
 import js.promise.Promise
 import tanstack.query.core.QueryKey
 import tanstack.react.query.useMutation
@@ -15,9 +14,15 @@ typealias DeleteUser = (User) -> Unit
 fun useDeleteUser(): DeleteUser {
     val client = useQueryClient()
     return useMutation<Unit, Error, User, QueryKey>(
-        mutationFn = { user -> deleteUser(user) },
         options = jso {
-            onSuccess = { _, _, _ -> client.invalidateQueries<Void>(USERS_QUERY_KEY) }
+            mutationFn = { user -> deleteUser(user) }
+            onSuccess = { _, _, _ ->
+                client.invalidateQueries(
+                    filters = jso {
+                        queryKey = USERS_QUERY_KEY
+                    }
+                )
+            }
         }
     ).mutate.unsafeCast<DeleteUser>()
 }
