@@ -9,9 +9,9 @@ kotlin {
     js {
         useEsModules()
         browser {
-            commonWebpackConfig(Action {
+            commonWebpackConfig {
                 outputFileName = "index.js"
-            })
+            }
         }
         binaries.executable()
     }
