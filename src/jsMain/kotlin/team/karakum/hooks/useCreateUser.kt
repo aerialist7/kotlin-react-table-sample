@@ -35,4 +35,4 @@ private fun createUser(user: User): Promise<User> =
             method = "POST"
             body = BodyInit(JSON.stringify(user))
         }
-    ).then { it.json() }.then { it.unsafeCast<User>() }
+    ).then { it.jsonAsync() }.then { it.unsafeCast<User>() }

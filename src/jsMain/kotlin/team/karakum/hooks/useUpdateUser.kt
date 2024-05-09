@@ -35,4 +35,4 @@ private fun updateUser(user: User): Promise<User> =
             method = "PUT"
             body = BodyInit(JSON.stringify(user))
         }
-    ).then { it.json() }.then { it.unsafeCast<User>() }
+    ).then { it.jsonAsync() }.then { it.unsafeCast<User>() }

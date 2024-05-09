@@ -20,5 +20,5 @@ fun useUsers(): Users {
 
 private fun getUsers(): Promise<Users> =
     fetchAsync("https://jsonplaceholder.typicode.com/users")
-        .then { it.json() }
+        .then { it.jsonAsync() }
         .then { it.unsafeCast<Users>() }
