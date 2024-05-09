@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
+
 plugins {
     kotlin("multiplatform")
 }
@@ -29,6 +31,12 @@ kotlin {
                 implementation(kotlinw("tanstack-react-table"))
             }
         }
+    }
+}
+
+tasks.withType<Kotlin2JsCompile>().configureEach {
+    compilerOptions {
+        useEsClasses.set(true)
     }
 }
 
