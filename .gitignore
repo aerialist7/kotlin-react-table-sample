@@ -5,3 +5,6 @@
 # Gradle
 .gradle
 build/
+
+# Kotlin 2
+.kotlin
