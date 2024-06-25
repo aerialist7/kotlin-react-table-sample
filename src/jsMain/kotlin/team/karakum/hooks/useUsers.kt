@@ -2,6 +2,7 @@ package team.karakum.hooks
 
 import js.objects.jso
 import js.promise.Promise
+import tanstack.query.core.QueryFunction
 import tanstack.query.core.QueryKey
 import tanstack.react.query.useQuery
 import team.karakum.USERS_QUERY_KEY
@@ -12,7 +13,7 @@ fun useUsers(): Users {
     val result = useQuery<Users, Error, Users, QueryKey>(
         options = jso {
             queryKey = USERS_QUERY_KEY
-            queryFn = { getUsers() }
+            queryFn = QueryFunction { getUsers() }
         },
     )
     return result.data ?: emptyArray()
