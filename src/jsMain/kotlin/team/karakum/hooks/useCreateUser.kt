@@ -8,6 +8,7 @@ import tanstack.react.query.useQueryClient
 import team.karakum.USERS_QUERY_KEY
 import team.karakum.entities.User
 import web.http.BodyInit
+import web.http.RequestMethod
 import web.http.fetchAsync
 
 typealias CreateUser = (User) -> Unit
@@ -32,7 +33,7 @@ private fun createUser(user: User): Promise<User> =
     fetchAsync(
         input = "https://jsonplaceholder.typicode.com/users",
         init = jso {
-            method = "POST"
+            method = RequestMethod.POST
             body = BodyInit(JSON.stringify(user))
         }
     ).then { it.jsonAsync() }.then { it.unsafeCast<User>() }

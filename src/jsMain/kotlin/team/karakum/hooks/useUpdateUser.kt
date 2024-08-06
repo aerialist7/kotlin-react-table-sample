@@ -8,6 +8,7 @@ import tanstack.react.query.useQueryClient
 import team.karakum.USERS_QUERY_KEY
 import team.karakum.entities.User
 import web.http.BodyInit
+import web.http.RequestMethod
 import web.http.fetchAsync
 
 typealias UpdateUser = (User) -> Unit
@@ -32,7 +33,7 @@ private fun updateUser(user: User): Promise<User> =
     fetchAsync(
         input = "https://jsonplaceholder.typicode.com/users/${user.id}",
         init = jso {
-            method = "PUT"
+            method = RequestMethod.PUT
             body = BodyInit(JSON.stringify(user))
         }
     ).then { it.jsonAsync() }.then { it.unsafeCast<User>() }
