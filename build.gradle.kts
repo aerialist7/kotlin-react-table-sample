@@ -19,15 +19,12 @@ kotlin {
 
     sourceSets {
         val jsMain by getting {
-            val wrappersVersion = extra["kotlin.wrappers.version"]
-
             dependencies {
-                implementation(project.dependencies.enforcedPlatform(kotlinw("wrappers-bom:$wrappersVersion")))
-                implementation(kotlinw("react"))
-                implementation(kotlinw("react-dom"))
-                implementation(kotlinw("emotion"))
-                implementation(kotlinw("tanstack-react-query"))
-                implementation(kotlinw("tanstack-react-table"))
+                implementation(libs.wrappers.react)
+                implementation(libs.wrappers.react.dom)
+                implementation(libs.wrappers.emotion)
+                implementation(libs.wrappers.tanstack.react.query)
+                implementation(libs.wrappers.tanstack.react.table)
             }
         }
     }
