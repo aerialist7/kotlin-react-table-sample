@@ -1,6 +1,10 @@
-package team.karakum.components
+package io.github.aerialist7.components
 
 import emotion.react.css
+import io.github.aerialist7.Colors
+import io.github.aerialist7.entities.User
+import io.github.aerialist7.hooks.useCreateUser
+import io.github.aerialist7.hooks.useUsers
 import js.objects.jso
 import react.FC
 import react.dom.html.ReactHTML.button
@@ -17,10 +21,6 @@ import tanstack.react.table.useReactTable
 import tanstack.table.core.ColumnDef
 import tanstack.table.core.StringOrTemplateHeader
 import tanstack.table.core.getCoreRowModel
-import team.karakum.Colors
-import team.karakum.entities.User
-import team.karakum.hooks.useCreateUser
-import team.karakum.hooks.useUsers
 import web.cssom.*
 import web.cssom.Auto.Companion.auto
 import web.cssom.LineStyle.Companion.solid

@@ -1,12 +1,12 @@
-package team.karakum.components
+package io.github.aerialist7.components
 
 import emotion.react.css
+import io.github.aerialist7.Colors
+import io.github.aerialist7.hooks.useDeleteUser
+import io.github.aerialist7.hooks.useUpdateUser
 import react.FC
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
-import team.karakum.Colors
-import team.karakum.hooks.useDeleteUser
-import team.karakum.hooks.useUpdateUser
 import web.cssom.BorderCollapse
 import web.cssom.LineStyle
 import web.cssom.WhiteSpace

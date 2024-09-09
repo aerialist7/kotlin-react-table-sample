@@ -1,4 +1,4 @@
-package team.karakum.entities
+package io.github.aerialist7.entities
 
 external interface User {
     var id: Key

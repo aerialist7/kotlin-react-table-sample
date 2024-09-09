@@ -1,7 +1,7 @@
-package team.karakum.components
+package io.github.aerialist7.components
 
+import io.github.aerialist7.hooks.useUsers
 import react.FC
-import team.karakum.hooks.useUsers
 
 val LoadingIndicator = FC {
     val users = useUsers()

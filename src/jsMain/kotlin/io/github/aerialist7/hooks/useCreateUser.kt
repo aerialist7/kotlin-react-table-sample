@@ -1,12 +1,12 @@
-package team.karakum.hooks
+package io.github.aerialist7.hooks
 
+import io.github.aerialist7.USERS_QUERY_KEY
+import io.github.aerialist7.entities.User
 import js.objects.jso
 import js.promise.Promise
 import tanstack.query.core.QueryKey
 import tanstack.react.query.useMutation
 import tanstack.react.query.useQueryClient
-import team.karakum.USERS_QUERY_KEY
-import team.karakum.entities.User
 import web.http.BodyInit
 import web.http.RequestMethod
 import web.http.fetchAsync

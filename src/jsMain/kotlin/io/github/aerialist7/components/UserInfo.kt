@@ -1,4 +1,4 @@
-package team.karakum.components
+package io.github.aerialist7.components
 
 import emotion.react.css
 import react.FC

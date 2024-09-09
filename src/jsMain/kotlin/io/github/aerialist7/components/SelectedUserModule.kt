@@ -1,7 +1,7 @@
-package team.karakum.components
+package io.github.aerialist7.components
 
+import io.github.aerialist7.entities.User
 import react.*
-import team.karakum.entities.User
 
 private val SelectedUserContext: Context<User?> =
     createContext()

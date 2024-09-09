@@ -1,10 +1,10 @@
-package team.karakum.components
+package io.github.aerialist7.components
 
 import emotion.react.css
+import io.github.aerialist7.Colors
 import react.FC
 import react.dom.html.ReactHTML.a
 import react.dom.html.ReactHTML.div
-import team.karakum.Colors
 import web.cssom.FontWeight
 import web.cssom.Overflow
 import web.cssom.Padding
