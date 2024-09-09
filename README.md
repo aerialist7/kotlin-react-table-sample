@@ -1,5 +1,28 @@
-# [Kotlin React Table Sample](https://karakum-team.github.io/kotlin-react-table-sample/)
+# Kotlin React Table Sample
 
-## Links
+## Useful commands
 
-* [Modern version of sample in Kotlin Wrappers](https://github.com/JetBrains/kotlin-wrappers/tree/master/examples/tanstack-react-table)
+### Clean
+
+```sh
+./gradlew clean
+./gradlew --stop
+```
+
+### Build
+
+```sh
+./gradlew build
+```
+
+### Run
+
+```sh
+./gradlew jsRun -t
+```
+
+### Gradle Wrapper update
+
+```sh
+./gradlew wrapper
+```
