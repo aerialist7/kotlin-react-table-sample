@@ -21,10 +21,10 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 implementation(libs.wrappers.react)
-                implementation(libs.wrappers.react.dom)
+                implementation(libs.wrappers.reactDom)
                 implementation(libs.wrappers.emotion)
-                implementation(libs.wrappers.tanstack.react.query)
-                implementation(libs.wrappers.tanstack.react.table)
+                implementation(libs.wrappers.tanstack.reactQuery)
+                implementation(libs.wrappers.tanstack.reactTable)
             }
         }
     }
