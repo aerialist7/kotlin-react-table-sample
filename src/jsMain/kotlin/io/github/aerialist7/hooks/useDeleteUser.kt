@@ -4,9 +4,11 @@ import io.github.aerialist7.USERS_QUERY_KEY
 import io.github.aerialist7.entities.User
 import js.objects.jso
 import js.promise.Promise
+import tanstack.query.core.InvalidateQueryFilters
 import tanstack.query.core.QueryKey
 import tanstack.react.query.useMutation
 import tanstack.react.query.useQueryClient
+import web.http.RequestInit
 import web.http.RequestMethod
 import web.http.fetchAsync
 
@@ -18,7 +20,7 @@ fun useDeleteUser(): DeleteUser {
         options = jso {
             mutationFn = { user -> deleteUser(user) }
             onSuccess = { _, _, _ ->
-                client.invalidateQueries(
+                client.invalidateQueries<InvalidateQueryFilters<*, *, *, QueryKey>>(
                     filters = jso {
                         queryKey = USERS_QUERY_KEY
                     }
@@ -31,5 +33,5 @@ fun useDeleteUser(): DeleteUser {
 private fun deleteUser(user: User): Promise<Unit> =
     fetchAsync(
         input = "https://jsonplaceholder.typicode.com/users/${user.id}",
-        init = jso { method = RequestMethod.DELETE }
+        init = RequestInit(method = RequestMethod.DELETE),
     ).then {}

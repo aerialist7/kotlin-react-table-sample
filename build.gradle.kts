@@ -20,11 +20,11 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
-                implementation(libs.wrappers.react)
-                implementation(libs.wrappers.reactDom)
-                implementation(libs.wrappers.emotion)
-                implementation(libs.wrappers.tanstack.reactQuery)
-                implementation(libs.wrappers.tanstack.reactTable)
+                implementation(kotlinWrappers.react)
+                implementation(kotlinWrappers.reactDom)
+                implementation(kotlinWrappers.emotion)
+                implementation(kotlinWrappers.tanstack.reactQuery)
+                implementation(kotlinWrappers.tanstack.reactTable)
             }
         }
     }
@@ -37,5 +37,5 @@ tasks.withType<KotlinJsCompile>().configureEach {
 }
 
 tasks.wrapper {
-    gradleVersion = "8.10"
+    gradleVersion = "8.12"
 }
