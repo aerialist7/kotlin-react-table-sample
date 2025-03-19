@@ -33,7 +33,7 @@ fun useUpdateUser(): UpdateUser {
 
 private fun updateUser(user: User): Promise<User> =
     fetchAsync(
-        input = "https://jsonplaceholder.typicode.com/users/${user.id}",
+        url = "https://jsonplaceholder.typicode.com/users/${user.id}",
         init = RequestInit(
             method = RequestMethod.PUT,
             body = BodyInit(JSON.stringify(user)),

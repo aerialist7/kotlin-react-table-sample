@@ -33,7 +33,7 @@ fun useCreateUser(): CreateUser {
 
 private fun createUser(user: User): Promise<User> =
     fetchAsync(
-        input = "https://jsonplaceholder.typicode.com/users",
+        url = "https://jsonplaceholder.typicode.com/users",
         init = RequestInit(
             method = RequestMethod.POST,
             body = BodyInit(JSON.stringify(user)),

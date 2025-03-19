@@ -32,6 +32,6 @@ fun useDeleteUser(): DeleteUser {
 
 private fun deleteUser(user: User): Promise<Unit> =
     fetchAsync(
-        input = "https://jsonplaceholder.typicode.com/users/${user.id}",
+        url = "https://jsonplaceholder.typicode.com/users/${user.id}",
         init = RequestInit(method = RequestMethod.DELETE),
     ).then {}
