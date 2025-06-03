@@ -4,9 +4,6 @@ plugins {
     kotlin("multiplatform")
 }
 
-fun kotlinw(target: String): String =
-    "org.jetbrains.kotlin-wrappers:kotlin-$target"
-
 kotlin {
     js {
         browser {
