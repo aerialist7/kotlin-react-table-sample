@@ -19,7 +19,7 @@ kotlin {
             dependencies {
                 implementation(kotlinWrappers.react)
                 implementation(kotlinWrappers.reactDom)
-                implementation(kotlinWrappers.emotion)
+                implementation(kotlinWrappers.emotion.react)
                 implementation(kotlinWrappers.tanstack.reactQuery)
                 implementation(kotlinWrappers.tanstack.reactTable)
             }

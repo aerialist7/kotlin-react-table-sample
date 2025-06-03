@@ -5,7 +5,7 @@ import io.github.aerialist7.Colors
 import io.github.aerialist7.entities.User
 import io.github.aerialist7.hooks.useCreateUser
 import io.github.aerialist7.hooks.useUsers
-import js.objects.jso
+import js.objects.unsafeJso
 import react.FC
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
@@ -20,6 +20,7 @@ import tanstack.react.table.renderHeader
 import tanstack.react.table.useReactTable
 import tanstack.table.core.ColumnDef
 import tanstack.table.core.StringOrTemplateHeader
+import tanstack.table.core.TableOptions
 import tanstack.table.core.getCoreRowModel
 import web.cssom.*
 import web.cssom.Auto.Companion.auto
@@ -32,28 +33,28 @@ val UserTable = FC {
     val createUser = useCreateUser()
     val setSelectedUser = useSetSelectedUser()
 
-    val table = useReactTable<User>(
-        options = jso {
-            data = users
+    val table = useReactTable(
+        options = TableOptions(
+            data = users,
             columns = arrayOf<ColumnDef<User, String>>(
-                jso {
+                unsafeJso {
                     id = "name"
                     header = StringOrTemplateHeader("Name")
                     accessorFn = { row, _ -> row.name }
                 },
-                jso {
+                unsafeJso {
                     id = "email"
                     header = StringOrTemplateHeader("E-mail")
                     accessorFn = { row, _ -> row.email }
                 },
-            )
-            getCoreRowModel = getCoreRowModel()
-        }
+            ),
+            getCoreRowModel = getCoreRowModel(),
+        )
     )
 
     div {
         button {
-            onClick = { createUser(jso { id = "${nextInt()}" }) }
+            onClick = { createUser(unsafeJso { id = "${nextInt()}" }) }
 
             +"Create New"
         }
