@@ -8,6 +8,7 @@ import tanstack.query.core.QueryKey
 import tanstack.react.query.UseMutationOptions
 import tanstack.react.query.useMutation
 import tanstack.react.query.useQueryClient
+import web.http.DELETE
 import web.http.RequestInit
 import web.http.RequestMethod
 import web.http.fetchAsync

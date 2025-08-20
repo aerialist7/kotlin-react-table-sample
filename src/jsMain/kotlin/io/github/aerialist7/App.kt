@@ -10,7 +10,7 @@ import react.dom.client.createRoot
 import tanstack.query.core.QueryClient
 import tanstack.react.query.QueryClientProvider
 import web.dom.document
-import web.html.HTML.div
+import web.html.HtmlTagName.div
 
 fun main() {
     val root = document.createElement(div)
