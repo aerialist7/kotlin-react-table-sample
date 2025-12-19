@@ -16,8 +16,8 @@ fun useCreateUser(): CreateUser {
     val client = useQueryClient()
     return useMutation<User, Error, User, QueryKey>(
         options = UseMutationOptions(
-            mutationFn = { user -> createUser(user) },
-            onSuccess = { _, _, _ ->
+            mutationFn = { user, _ -> createUser(user) },
+            onSuccess = { _, _, _, _ ->
                 client.invalidateQueries(
                     filters = InvalidateQueryFilters(
                         queryKey = USERS_QUERY_KEY,

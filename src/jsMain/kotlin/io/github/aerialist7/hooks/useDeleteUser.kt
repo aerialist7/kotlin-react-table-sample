@@ -19,8 +19,8 @@ fun useDeleteUser(): DeleteUser {
     val client = useQueryClient()
     return useMutation<Unit, Error, User, QueryKey>(
         options = UseMutationOptions(
-            mutationFn = { user -> deleteUser(user) },
-            onSuccess = { _, _, _ ->
+            mutationFn = { user, _ -> deleteUser(user) },
+            onSuccess = { _, _, _, _ ->
                 client.invalidateQueries(
                     filters = InvalidateQueryFilters(
                         queryKey = USERS_QUERY_KEY,

@@ -16,8 +16,8 @@ fun useUpdateUser(): UpdateUser {
     val client = useQueryClient()
     return useMutation<User, Error, User, QueryKey>(
         options = UseMutationOptions(
-            mutationFn = { user -> updateUser(user) },
-            onSuccess = { _, _, _ ->
+            mutationFn = { user, _ -> updateUser(user) },
+            onSuccess = { _, _, _, _ ->
                 client.invalidateQueries(
                     filters = InvalidateQueryFilters(
                         queryKey = USERS_QUERY_KEY,
